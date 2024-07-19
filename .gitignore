@@ -1,3 +1,9 @@
+# cognosis ignores
+.old/*
+scratch/*
+*.scratch
+*.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

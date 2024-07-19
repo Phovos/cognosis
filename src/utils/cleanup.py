@@ -66,7 +66,7 @@ def cleanup():
                 remove_path(Path(root) / name)
 
     # Uninstall the project using pipx (if installed)
-    run_command("pipx uninstall cognosis || true")
+    # run_command("pipx uninstall cognosis || true")
 
     # Remove PDM installation (if installed via pipx)
     run_command("pipx uninstall pdm || true")

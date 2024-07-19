@@ -5,6 +5,8 @@ from functools import reduce, partial
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union, TypeVar, Literal
 from enum import Enum, auto
+import json
+import os
 
 T = TypeVar("T")  # generic type variable for typeless functions
 
@@ -60,8 +62,12 @@ class Logger:
         self.logger = logging.getLogger(name)
         self.logger.setLevel(level)
         if not self.logger.handlers:
-            self.logger.addHandler(logging.StreamHandler())
-            self.logger.addHandler(logging.FileHandler(f"{self.name}.log"))
+            handler = logging.StreamHandler()
+            handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+            self.logger.addHandler(handler)
+            file_handler = logging.FileHandler(f"{self.name}.log")
+            file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+            self.logger.addHandler(file_handler)
 
     def log(self, message: str, level: int = logging.INFO):
         try:
@@ -69,7 +75,17 @@ class Logger:
         except Exception as e:
             logging.error(f"Failed to log message: {e}")
 
+def load_config(file_path: str = "config.json") -> dict:
+    try:
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+
 def main():
+    config = load_config()
+    failure_threshold = config.get("failure_threshold", 10)
+
     logger = Logger("MainLogger")
     try:
         runtime()

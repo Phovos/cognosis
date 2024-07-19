@@ -6,10 +6,12 @@ import platform
 import subprocess
 import sys
 from typing import Any, Dict
+import threading
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.DEBUG,  # Change to DEBUG for more detailed logs
+    format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 state = {
@@ -23,13 +25,12 @@ state = {
     "pre_commit_installed": False,
 }
 
-
-def run_command(command: str, check: bool = True, shell: bool = False) -> Dict[str, Any]:
+def run_command(command: str, check: bool = True, shell: bool = False, timeout: int = 300) -> Dict[str, Any]:
     try:
         process = subprocess.Popen(
             command, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )
-        stdout, stderr = process.communicate()
+        stdout, stderr = process.communicate(timeout=timeout)
 
         if check and process.returncode != 0:
             logging.error(f"Command '{command}' failed with return code {process.returncode}")
@@ -42,6 +43,16 @@ def run_command(command: str, check: bool = True, shell: bool = False) -> Dict[s
 
         logging.info(f"Command '{command}' completed successfully")
         logging.debug(f"Output: {stdout.decode('utf-8')}")
+
+    except subprocess.TimeoutExpired:
+        logging.error(f"Command '{command}' timed out")
+        process.kill()
+        stdout, stderr = process.communicate()
+        return {
+            "return_code": -1,
+            "output": stdout.decode('utf-8'),
+            "error": "TimeoutExpired",
+        }
 
     except Exception as e:
         logging.error(f"An error occurred while running command '{command}': {str(e)}")
@@ -64,7 +75,6 @@ def update_path():
         os.environ["PATH"] = f"{local_bin}:{os.environ['PATH']}"
         logging.info(f"Added {local_bin} to PATH")
 
-
 def ensure_pdm():
     """Ensure pdm is installed"""
     global state
@@ -83,7 +93,6 @@ def ensure_pdm():
         run_command("pip install pdm", shell=True)
         state["pdm_installed"] = True
 
-
 def prompt_for_mode():
     """Prompt the user to choose between development and non-development setup"""
     while True:
@@ -94,12 +103,10 @@ def prompt_for_mode():
             return choice
         logging.info("Invalid choice, please enter 'd' or 'n'.")
 
-
 def install(mode):
     """Run installation"""
     run_command("pdm install --project ./", shell=True)
     state["dependencies_installed"] = True
-
 
 def lint():
     """Run linting tools"""
@@ -109,7 +116,6 @@ def lint():
     run_command("pdm run mypy .", shell=True)
     state["lint_passed"] = True
 
-
 def format_code():
     """Format the code"""
     global state
@@ -117,13 +123,11 @@ def format_code():
     run_command("pdm run isort .", shell=True)
     state["code_formatted"] = True
 
-
 def test():
     """Run tests"""
     global state
     run_command("pdm run pytest", shell=True)
     state["tests_passed"] = True
-
 
 def bench():
     """Run benchmarks"""
@@ -131,20 +135,17 @@ def bench():
     run_command("pdm run python src/bench/bench.py", shell=True)
     state["benchmarks_run"] = True
 
-
 def pre_commit_install():
     """Install pre-commit hooks"""
     global state
     run_command("pdm run pre-commit install", shell=True)
     state["pre_commit_installed"] = True
 
-
 def introspect():
     """Introspect the current state and print results"""
     logging.info("Introspection results:")
     for key, value in state.items():
         logging.info(f"{key}: {'✅' if value else '❌'}")
-
 
 def update_shell_environment():
     if platform.system() != "Windows":
@@ -157,7 +158,6 @@ def update_shell_environment():
             logging.info(".bashrc not found, shell environment might not be up to date")
     else:
         logging.info("On Windows, manual PATH update might be necessary")
-
 
 def main():
     ensure_pdm()
@@ -203,7 +203,6 @@ def main():
         logging.info("No additional arguments provided. Skipping user-defined main function.")
 
     introspect()
-
 
 if __name__ == "__main__":
     main()
