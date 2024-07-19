@@ -1,0 +1,92 @@
+[build-system]
+requires = ["pdm-pep517>=0.8.5"]
+build-backend = "pdm.pep517.api"
+
+[project]
+name = "cognosis"
+description = "A namespace and filesystem interface for Obsidian knowledge bases."
+authors = [{ name = "Phovos", email = "Phovos@outlook.com" }]
+requires-python = ">=3.11"
+version = "0.2.1"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-benchmark",
+    "hypothesis",
+]
+lint = [
+    "flake8",
+    "black",
+    "isort",
+    "mypy",
+]
+dev = [
+    "tox",
+    "pre-commit",
+    "cffi",
+    "cmake",
+    "pdm",
+]
+
+[tool.pdm.conda]
+runner = "micromamba"
+channels = ["conda-forge/noarch", "conda-forge", "anaconda"]
+dependencies = ["pdm", "jax"]
+as-default-manager = true
+solver = "libmamba"
+excludes = ["pytest-cov"]
+installation-method = "copy"
+batched-commands = true
+
+[tool.pdm.conda.pypi-mapping]
+download-dir = "/tmp"
+url = "https://url/to/mapping.yaml"
+
+[tool.pdm.conda.optional-dependencies]
+extra = [
+    "anaconda:ffmpeg",
+    "anaconda::xonsh",
+    "anaconda::pdm",
+    "anaconda::jupyter",
+    "anaconda::ipykernel",
+    "anaconda::numpy",
+    "anaconda::mypy",
+    "anaconda::ipykernel",
+]
+
+[tool.black]
+line-length = 88
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+
+[tool.mypy]
+python_version = "3.11"
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[project.scripts]
+main = "main:main"
+cleanup = "src.utils.cleanup:main"
+
+[tool.pdm.scripts]
+lint = "flake8 ."
+format = { composite = ["black .", "isort ."] }
+typecheck = "mypy ."
+test = "pytest"
+
+[tool.cognosis.api]
+readme = { file = "src/api/README.md", content-type = "text/markdown" }
