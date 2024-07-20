@@ -24,25 +24,38 @@ state = {
 }
 
 
-def run_command(command: str, check: bool = True, shell: bool = False) -> Dict[str, Any]:
+def run_command(
+    command: str, check: bool = True, shell: bool = False, timeout: int = 120
+) -> Dict[str, Any]:
     try:
         process = subprocess.Popen(
             command, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )
-        stdout, stderr = process.communicate()
+        stdout, stderr = process.communicate(timeout=timeout)
 
         if check and process.returncode != 0:
-            logging.error(f"Command '{command}' failed with return code {process.returncode}")
+            logging.error(
+                f"Command '{command}' failed with return code {process.returncode}"
+            )
             logging.error(f"Error output: {stderr.decode('utf-8')}")
             return {
                 "return_code": process.returncode,
-                "output": stdout.decode('utf-8'),
-                "error": stderr.decode('utf-8'),
+                "output": stdout.decode("utf-8"),
+                "error": stderr.decode("utf-8"),
             }
 
         logging.info(f"Command '{command}' completed successfully")
         logging.debug(f"Output: {stdout.decode('utf-8')}")
 
+    except subprocess.TimeoutExpired:
+        process.kill()
+        stdout, stderr = process.communicate()
+        logging.error(f"Command '{command}' timed out and was killed.")
+        return {
+            "return_code": -1,
+            "output": stdout.decode("utf-8"),
+            "error": "Command timed out",
+        }
     except Exception as e:
         logging.error(f"An error occurred while running command '{command}': {str(e)}")
         return {
@@ -53,9 +66,10 @@ def run_command(command: str, check: bool = True, shell: bool = False) -> Dict[s
 
     return {
         "return_code": process.returncode,
-        "output": stdout.decode('utf-8'),
-        "error": stderr.decode('utf-8'),
+        "output": stdout.decode("utf-8"),
+        "error": stderr.decode("utf-8"),
     }
+
 
 def update_path():
     home = os.path.expanduser("~")
@@ -151,7 +165,7 @@ def update_shell_environment():
         home = os.path.expanduser("~")
         bashrc_path = os.path.join(home, ".bashrc")
         if os.path.exists(bashrc_path):
-            subprocess.run(f"source {bashrc_path}", shell=True, executable="/bin/bash")
+            subprocess.run(f". {bashrc_path}", shell=True, executable="/bin/bash")
             logging.info("Updated shell environment from .bashrc")
         else:
             logging.info(".bashrc not found, shell environment might not be up to date")
@@ -194,13 +208,16 @@ def main():
     if args.run_user_main:
         try:
             import main
+
             main.usermain()
         except ImportError:
             logging.error(
                 "No user-defined main function found. Please add a main.py file and define a usermain() function."
             )
     else:
-        logging.info("No additional arguments provided. Skipping user-defined main function.")
+        logging.info(
+            "No additional arguments provided. Skipping user-defined main function."
+        )
 
     introspect()
 

@@ -8,9 +8,9 @@ import sys
 from pathlib import Path
 
 
-def run_command(command):
+def run_command(command, shell=True):
     try:
-        subprocess.run(command, check=True, shell=True)
+        subprocess.run(command, check=True, shell=shell)
         print(f"Successfully ran command: {command}")
     except subprocess.CalledProcessError as e:
         print(f"Command '{command}' failed with error: {e}")
@@ -39,7 +39,7 @@ def cleanup():
 
     # List of paths to remove
     paths_to_remove = [
-        ".venv",
+        ".venv",  # Virtual environment
         "build",
         "dist",
         ".pytest_cache",
@@ -64,12 +64,6 @@ def cleanup():
         for name in files:
             if name.endswith(".pyc"):
                 remove_path(Path(root) / name)
-
-    # Uninstall the project using pipx (if installed)
-    run_command("pipx uninstall cognosis || true")
-
-    # Remove PDM installation (if installed via pipx)
-    run_command("pipx uninstall pdm || true")
 
     print("Cleanup completed.")
 

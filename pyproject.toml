@@ -34,32 +34,6 @@ dev = [
     "pdm",
 ]
 
-[tool.pdm.conda]
-runner = "micromamba"
-channels = ["conda-forge/noarch", "conda-forge", "anaconda"]
-dependencies = ["pdm", "jax"]
-as-default-manager = true
-solver = "libmamba"
-excludes = ["pytest-cov"]
-installation-method = "copy"
-batched-commands = true
-
-[tool.pdm.conda.pypi-mapping]
-download-dir = "/tmp"
-url = "https://url/to/mapping.yaml"
-
-[tool.pdm.conda.optional-dependencies]
-extra = [
-    "anaconda:ffmpeg",
-    "anaconda::xonsh",
-    "anaconda::pdm",
-    "anaconda::jupyter",
-    "anaconda::ipykernel",
-    "anaconda::numpy",
-    "anaconda::mypy",
-    "anaconda::ipykernel",
-]
-
 [tool.black]
 line-length = 88
 
@@ -90,3 +64,6 @@ test = "pytest"
 
 [tool.cognosis.api]
 readme = { file = "src/api/README.md", content-type = "text/markdown" }
+
+[tool.pdm]
+venvs.path = ".venv"
