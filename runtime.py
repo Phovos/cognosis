@@ -9,21 +9,19 @@ import subprocess
 import sys
 from typing import Any, Dict
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+class Logger:
+    def __init__(self, name: str, level: int = logging.INFO):
+        self.logger = logging.getLogger(name)
+        self.logger.setLevel(level)
+        if not self.logger.handlers:
+            for handler in [logging.StreamHandler(), logging.FileHandler(f"{name}.log")]:
+                handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+                self.logger.addHandler(handler)
+    def log(self, message: str, level: int = logging.INFO):
+        try: self.logger.log(level, message)
+        except Exception as e: logging.error(f"Failed to log message: {e}")
 
-state = {
-    "pdm_installed": False,
-    "virtualenv_created": False,
-    "dependencies_installed": False,
-    "lint_passed": False,
-    "code_formatted": False,
-    "tests_passed": False,
-    "benchmarks_run": False,
-    "pre_commit_installed": False,
-}
+state: Dict[str, bool] = {k: False for k in ["pdm_installed", "virtualenv_created", "dependencies_installed", "lint_passed", "code_formatted", "tests_passed", "benchmarks_run", "pre_commit_installed"]}
 
 def run_command(
     command: str, check: bool = True, shell: bool = False, timeout: int = 120

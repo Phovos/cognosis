@@ -8,7 +8,7 @@ class SymbolicKernel:
         self.max_memory = max_memory
         self.llama = None
         self.running = False
-        self.knowledge_base = set()  # Simplified knowledge base as a set of concepts
+        self.knowledge_base = set()  # set of concepts as simplified kb
 
     async def __aenter__(self):
         self.llama = await LlamaInterface().__aenter__()
@@ -44,19 +44,7 @@ class SymbolicKernel:
             raise RuntimeError("Kernel is not initialized or has been stopped")
         return await self.llama._query_llama(query)  # Assuming _query_llama is an async method
 
-async def main():
-    kb_dir = "/path/to/kb"
-    output_dir = "/path/to/output"
-    max_memory = 1024
-
-    async with SymbolicKernel(kb_dir, output_dir, max_memory) as kernel:
-        result = await kernel.process_task("Describe the water cycle.")
-        print(result)
-        status = kernel.get_status()
-        print(status)
-
-        response = await kernel.query("What are the key components of the water cycle?")
-        print(response)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    async def generate_knowledge_base(self):
+        if not self.running:
+            raise RuntimeError("Kernel is not initialized or has been stopped")
+        await self.llama.generate_knowledge_base(self.kb_dir, self.knowledge_base, self.max_memory)

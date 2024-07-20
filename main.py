@@ -2,12 +2,15 @@
 import asyncio
 import logging
 import platform
+import os
 from functools import partial
+from typing import Dict, Any
 
+# Import necessary modules
 import runtime
 from src.app.kernel import SymbolicKernel
 from src.app.llama import LlamaInterface
-from src.models import EventBus, User, AtomicData, FormalTheory
+from src.model import EventBus, create_model, Field, AtomicData, FormalTheory
 
 # Logger setup
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
@@ -24,11 +27,43 @@ def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
 logger = setup_logger("MainLogger")
 event_bus = EventBus()
 
+# Create a default model profile based on common filesystem attributes
+FileStat = create_model(
+    "FileStat",
+    st_mode=Field(int),
+    st_ino=Field(int, required=False),  # Inode not available on Windows
+    st_dev=Field(int, required=False),  # Device not meaningful on Windows
+    st_nlink=Field(int, required=False),  # Hard links not meaningful on Windows
+    st_uid=Field(int, required=False),  # User ID not available on Windows
+    st_gid=Field(int, required=False),  # Group ID not available on Windows
+    st_size=Field(int),
+    st_atime=Field(float),  # Access time
+    st_mtime=Field(float),  # Modification time
+    st_ctime=Field(float)   # Creation time on Windows, change time on Unix
+)
+
 async def usermain(failure_threshold=10) -> bool:
     user_logger = setup_logger("UserMainLogger")
 
     async def do_something() -> bool:
-        # Example function that simulates an operation
+        # Simulate a filesystem stat operation
+        stat_info = os.stat(__file__)
+        stat_data = {
+            'st_mode': stat_info.st_mode,
+            'st_size': stat_info.st_size,
+            'st_atime': stat_info.st_atime,
+            'st_mtime': stat_info.st_mtime,
+            'st_ctime': stat_info.st_ctime
+        }
+
+        # Optional fields depending on OS
+        optional_fields = ['st_ino', 'st_dev', 'st_nlink', 'st_uid', 'st_gid']
+        for field in optional_fields:
+            if hasattr(stat_info, field):
+                stat_data[field] = getattr(stat_info, field)
+
+        file_stat = FileStat(**stat_data)
+        user_logger.info(f"FileStat: {file_stat.dict()}")
         return True
 
     try:
@@ -40,9 +75,7 @@ async def usermain(failure_threshold=10) -> bool:
         user_logger.error(f"Failed with error: {e}")
         return False
 
-    failure_count = sum(
-        1 for _ in range(failure_threshold) if not await do_something()
-    )  # Ensure do_something is called in the loop
+    failure_count = sum(1 for _ in range(failure_threshold) if not await do_something())
     failure_rate = failure_count / failure_threshold
     user_logger.info(f"Failure rate: {failure_rate:.2%}")
     return failure_rate < 1.0
@@ -62,18 +95,36 @@ async def main():
         output_dir = "/path/to/output"
         max_memory = 1024
 
-        async with SymbolicKernel(kb_dir, output_dir, max_memory) as kernel:
-            result = await kernel.process_task("Describe the water cycle.")
-            print(result)
-            status = kernel.get_status()
-            print(status)
+        try:
+            async with SymbolicKernel(kb_dir, output_dir, max_memory) as kernel:
+                result = await kernel.process_task("Describe the water cycle.")
+                print(result)
+                status = kernel.get_status()
+                print(status)
 
-            response = await kernel.query("What are the key components of the water cycle?")
-            print(response)
+                response = await kernel.query("What are the key components of the water cycle?")
+                print(response)
+        except Exception as e:
+            logger.error(f"Failed to run SymbolicKernel: {e}")
 
         # Example usage of models
-        user = User(ID=1, name="John Doe")
-        print(user.json())
+        stat_info = os.stat(__file__)
+        stat_data = {
+            'st_mode': stat_info.st_mode,
+            'st_size': stat_info.st_size,
+            'st_atime': stat_info.st_atime,
+            'st_mtime': stat_info.st_mtime,
+            'st_ctime': stat_info.st_ctime
+        }
+
+        # Optional fields depending on OS
+        optional_fields = ['st_ino', 'st_dev', 'st_nlink', 'st_uid', 'st_gid']
+        for field in optional_fields:
+            if hasattr(stat_info, field):
+                stat_data[field] = getattr(stat_info, field)
+
+        file_stat = FileStat(**stat_data)
+        print(f"FileStat JSON: {file_stat.json()}")
 
         atomic_data = AtomicData("Sample data")
         print(atomic_data.encode())
