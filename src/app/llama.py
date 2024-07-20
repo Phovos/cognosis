@@ -28,37 +28,39 @@ class LlamaInterface:
         if self.mock_mode:
             return f"Mock response for: {prompt}"
 
-        system = platform.system().lower()
-
-        if system == "windows":
-            command = [
-                "powershell",
-                "-Command",
-                f"""
-                $url = "http://localhost:11434/api/generate"
-                $body = @{{ model = "llama3"; prompt = "{prompt}"; format = "json"; stream = $false }}
-                $jsonBody = $body | ConvertTo-Json
-                $response = Invoke-WebRequest -Uri $url -Method Post -Body $jsonBody -ContentType "application/json"
-                $response.Content
-                """,
-            ]
-        else:
-            command = f"""
-            curl http://localhost:11434/api/generate -d '{{
-              "model": "llama3",
-              "prompt": "{prompt}",
-              "format": "json",
-              "stream": false
-            }}'
-            """
-
         try:
+            system = platform.system().lower()
+            if system == "windows":
+                command = [
+                    "powershell",
+                    "-Command",
+                    f"""
+                    $url = "http://localhost:11434/api/generate"
+                    $body = @{{ model = "llama3"; prompt = "{prompt}"; format = "json"; stream = $false }}
+                    $jsonBody = $body | ConvertTo-Json
+                    $response = Invoke-WebRequest -Uri $url -Method Post -Body $jsonBody -ContentType "application/json"
+                    $response.Content
+                    """,
+                ]
+            else:
+                command = f"""
+                curl http://localhost:11434/api/generate -d '{{
+                "model": "llama3",
+                "prompt": "{prompt}",
+                "format": "json",
+                "stream": false
+                }}'
+                """
+
             result = subprocess.run(command, shell=True, capture_output=True, text=True)
             if result.returncode == 0:
                 response = json.loads(result.stdout)
                 return response.get("response", "No response key in JSON")
             else:
                 raise Exception(f"Command failed with return code {result.returncode}")
+        except json.JSONDecodeError as e:
+            print(f"JSON decoding error: {e}")
+            return f"Error response for: {prompt}"
         except Exception as e:
             print(f"Error querying Llama: {e}")
             return f"Error response for: {prompt}"

@@ -41,8 +41,8 @@ async def usermain(failure_threshold=10) -> bool:
         return False
 
     failure_count = sum(
-        1 for _ in range(failure_threshold) if not await usermain(failure_threshold)
-    )
+        1 for _ in range(failure_threshold) if not await do_something()
+    )  # Ensure do_something is called in the loop
     failure_rate = failure_count / failure_threshold
     user_logger.info(f"Failure rate: {failure_rate:.2%}")
     return failure_rate < 1.0
@@ -100,9 +100,17 @@ async def main():
             await CurriedUsermain()
 
     except Exception as e:
-        logger.error(f"An error occurred: {str(e)}")
+        logger.error(f"An error occurred: {str(e)}", exc_info=True)  # Added exc_info=True for full traceback
     finally:
         logger.info("Exiting...")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except RuntimeError:  # event loop is already running
+        logger.warning("RuntimeError detected: asyncio.run() cannot be called from a running event loop.")
+        try:
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(main())
+        except Exception as e:
+            logger.error(f"An error occurred while handling the existing event loop: {str(e)}", exc_info=True)
