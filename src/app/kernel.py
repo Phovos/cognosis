@@ -11,13 +11,13 @@ class SymbolicKernel:
         self.knowledge_base = set()  # Simplified knowledge base as a set of concepts
 
     async def __aenter__(self):
-        self.llama = await LlamaInterface().__aenter__()  # Correctly use __aenter__ for initialization
+        self.llama = await LlamaInterface().__aenter__()
         self.running = True
         return self
 
     async def __aexit__(self, exc_type, exc, tb):
         if self.llama:
-            await self.llama.__aexit__(exc_type, exc, tb)  # Correctly use __aexit__ for cleanup
+            await self.llama.__aexit__(exc_type, exc, tb)
         self.running = False
 
     async def process_task(self, task):
