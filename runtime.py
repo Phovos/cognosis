@@ -187,7 +187,7 @@ async def usermain():
             "No user-defined main function found. Please add a main.py file and define a usermain() function."
         )
 
-def main():
+def main(usermain):
     ensure_pdm()
     ensure_virtualenv()
     update_shell_environment()

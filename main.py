@@ -55,7 +55,7 @@ def log_error(error: Exception):
 async def main():
     try:
         logger.info("Starting runtime")
-        runtime.main()
+        runtime.main(["python", "main.py"])
 
         # Initialize and run the SymbolicKernel
         kb_dir = "/path/to/kb"
