@@ -152,7 +152,11 @@ class ActionResponse(Atom):
         self.message = obj['message']
 
     def execute(self, *args: Any, **kwargs: Any) -> Any:
-        # Placeholder for user-defined implementation
+        # TODO: expose this to the user
+        if self.status == "success":
+            return self.data
+        else:
+            raise Exception(self.message)
         pass
 
 @dataclass
