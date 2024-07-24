@@ -6,7 +6,8 @@ import asyncio
 from datetime import datetime
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional, Set, Type, TypeVar, Union
+from typing import Any, Callable, Dict, List, Optional, Set, Type
+from typing import Union, Generic, TypeVar
 from functools import wraps
 
 # Define typing variables
