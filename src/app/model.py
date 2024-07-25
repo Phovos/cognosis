@@ -11,11 +11,8 @@ import time
 import asyncio
 # Define typing variables
 T = TypeVar('T')
-
-# Setup logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Define validation and logging decorators
 def validate_atom(func: Callable[..., T]) -> Callable[..., T]:
     @wraps(func)
     def wrapper(self, *args, **kwargs) -> T:
@@ -37,9 +34,7 @@ def log_execution(func: Callable[..., T]) -> Callable[..., T]:
             raise
     return wrapper
 
-
-# Base Atom Class
-class Atom(ABC):
+class Atom(ABC): # core base class for all possible elements of a formal system
     def __init__(self, metadata: Optional[Dict[str, Any]] = None):
         self.metadata = metadata or {}
 
@@ -163,6 +158,7 @@ class Event(Atom):
     def execute(self, *args: Any, **kwargs: Any) -> Any:
         logging.info(f"Executing event: {self.id}")
         # Implement necessary functionality here
+        # possible modified-quine behavior, epigenetic behavior, etc.
 
 @dataclass
 class ActionRequest(Atom):
@@ -213,7 +209,7 @@ class ActionRequest(Atom):
 
     def execute(self, *args: Any, **kwargs: Any) -> Any:
         logging.info(f"Executing action: {self.action}")
-        # Implement action-related functionality here
+        # EXTEND from here; possibly into state encapsulation via quine ast source code
 
 @dataclass
 class ActionResponse(Atom):
@@ -276,43 +272,6 @@ class ActionResponse(Atom):
             raise Exception(self.message)
 
 @dataclass
-class MultiDimensionalAtom(Atom):
-    dimensions: List[Atom] = field(default_factory=list)
-
-    def add_dimension(self, atom: Atom):
-        self.dimensions.append(atom)
-    
-    def validate(self) -> bool:
-        if not all(isinstance(atom, Atom) for atom in self.dimensions):
-            logging.error("Invalid Atom in dimensions")
-            return False
-        return True
-
-    @validate_atom
-    def encode(self) -> bytes:
-        encoded_dims = [atom.encode() for atom in self.dimensions]
-        lengths = struct.pack(f'>{len(encoded_dims)}I', *map(len, encoded_dims))
-        return struct.pack('>I', len(encoded_dims)) + lengths + b''.join(encoded_dims)
-
-    @validate_atom
-    def decode(self, data: bytes) -> None:
-        num_dims = struct.unpack('>I', data[:4])[0]
-        lengths = struct.unpack(f'>{num_dims}I', data[4:4 + 4 * num_dims])
-        offset = 4 + 4 * num_dims
-        self.dimensions = []
-        for length in lengths:
-            atom_data = data[offset:offset + length]
-            atom = Token()  # Initialize as Token by default, can be replaced dynamically
-            atom.decode(atom_data)
-            self.dimensions.append(atom)
-            offset += length
-
-    @validate_atom
-    @log_execution
-    def execute(self, *args: Any, **kwargs: Any) -> Any:
-        return [atom.execute(*args, **kwargs) for atom in self.dimensions]
-
-@dataclass
 class FormalTheory(Generic[T], Atom):
     top_atom: Optional[Atom] = None
     bottom_atom: Optional[Atom] = None
@@ -358,8 +317,7 @@ class FormalTheory(Generic[T], Atom):
             "bottom_value": self.bottom_atom.execute(*args, **kwargs) if self.bottom_atom else None
         }
 
-# Define Event Bus (pub/sub pattern) restricted to Atom events
-class EventBus:
+class EventBus: # Define Event Bus (pub/sub pattern)
     def __init__(self):
         self._subscribers: Dict[str, List[Callable[[Atom], None]]] = {}
 
@@ -378,9 +336,8 @@ class EventBus:
         if event_type in self._subscribers:
             for handler in self._subscribers[event_type]:
                 handler(event)
-
-# Create an instance of EventBus
 event_bus = EventBus()
+
 class Operation(ActionRequest):
     def __init__(self, name: str, action: Callable, args: List[Any] = None, kwargs: Dict[str, Any] = None):
         metadata = {'name': name}
@@ -391,6 +348,10 @@ class Operation(ActionRequest):
 
     def execute(self, *args: Any, **kwargs: Any) -> Any:
         return self.action(*self.params['args'], **self.params['kwargs'])
+
+# -------------------below are runtime.py scoped classes and methods---------
+# these are runtime.py scoped classes and methods but are here because 
+# this is a monolithic file for purposes of collaboration etc.
 
 class Task:
     def __init__(self, task_id: int, operation: Operation):
@@ -461,7 +422,7 @@ class SpeculativeKernel:
         arena = self.arenas[arena_id]
         while self.running:
             try:
-                task = self.task_queue.get(timeout=1)  # Adjust timeout as necessary
+                task = self.task_queue.get(timeout=1)
                 logging.info(f"Worker {arena_id} picked up task {task.task_id}")
                 arena.allocate("current_task", task)
                 result = task.run()
