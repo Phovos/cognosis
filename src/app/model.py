@@ -461,15 +461,3 @@ class SpeculativeKernel:
             arena_id = int(arena_name.split("_")[1])
             self.arenas[arena_id].local_data = local_data
         logging.info(f"State loaded from {filename}")
-
-class AppBus(EventBus):
-    def __init__(self, name: str = "AppBus"):
-        super().__init__()
-        self.logger = Logger(name)
-
-
-class AppModel(Theory):
-    def __init__(self, name: str, description: str, fields: Dict[str, Field]):
-        super().__init__(name, description, fields)
-        self.logger = Logger(name)
-        self.kernel = SymbolicKernel()
