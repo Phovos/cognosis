@@ -6,6 +6,16 @@ from dataclasses import dataclass, field
 from functools import wraps
 from typing import Any, Dict, List, Optional, Callable
 
+"""
+The key thing to know about this code is that it wants to universally represent data structures within its Python runtime.
+All data structures will be polymorphic relations of the central core structure, which is called an Atom. It is indeed somewhat
+modeled after the physical system of an actual atom but aims to utilize this concept to make sense of language, syntax,
+perception, and neural network functions.
+
+The Atom acts as a monadic entity within the computational namespace, encapsulating both data and its associated computational
+context. This design allows for complex operations and interactions while maintaining a self-contained structure.
+"""
+
 def validate_atom(func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(func)
     def wrapper(self, *args, **kwargs) -> Any:

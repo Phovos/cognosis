@@ -33,6 +33,29 @@ def remove_path(path):
         print(f"Error removing {path}: {e}")
 
 
+def move_log_files():
+    # Get the project root directory
+    project_root = Path(__file__).resolve().parents[2]
+
+    # Ensure the logs directory exists
+    logs_dir = project_root / "logs"
+    logs_dir.mkdir(exist_ok=True)
+
+    # Move .log files to /logs/
+    for root, dirs, files in os.walk(project_root, topdown=True):
+        # Skip "logs" directory
+        dirs[:] = [d for d in dirs if d != "logs"]
+        
+        for file in files:
+            if file.endswith(".log"):
+                source_file = Path(root) / file
+                destination_file = logs_dir / file
+                try:
+                    shutil.move(str(source_file), str(destination_file))
+                    print(f"Moved {source_file} to {destination_file}")
+                except Exception as e:
+                    print(f"Error moving {source_file} to {destination_file}: {e}")
+
 def cleanup():
     # Get the project root directory
     project_root = Path(__file__).resolve().parents[2]
@@ -69,10 +92,9 @@ def cleanup():
 
 
 def main():
-    confirm = input(
-        "This will remove all project artifacts and installations. Are you sure? (y/N): "
-    )
+    confirm = input("This will remove all project artifacts and installations. Are you sure? (y/N): ")
     if confirm.lower() == "y":
+        move_log_files()
         cleanup()
     else:
         print("Cleanup aborted.")

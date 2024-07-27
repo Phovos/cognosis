@@ -1,5 +1,14 @@
 import asyncio
+import json
+import logging
+import queue
+import threading
+from concurrent.futures import Future, ThreadPoolExecutor
+from contextlib import contextmanager
+from typing import Any, Callable, Dict, List, Tuple
 from src.app.llama import LlamaInterface
+import logging
+Logger = logging.getLogger(__name__)
 
 class SymbolicKernel:
     def __init__(self, kb_dir, output_dir, max_memory):
@@ -49,18 +58,7 @@ class SymbolicKernel:
             raise RuntimeError("Kernel is not initialized or has been stopped")
         await self.llama.generate_knowledge_base(self.kb_dir, self.knowledge_base, self.max_memory)
 
-import json
-import logging
-import queue
-import threading
-from concurrent.futures import Future, ThreadPoolExecutor
-from contextlib import contextmanager
-from typing import Any, Callable, Dict, List, Tuple
 
-# Logger configuration
-logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s"
-)
 
 
 class Task:
