@@ -9,9 +9,9 @@ import threading
 import queue
 import time
 import asyncio
-# Define typing variables
+
+Logger = logging.getLogger(__name__)
 T = TypeVar('T')
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def validate_atom(func: Callable[..., T]) -> Callable[..., T]:
     @wraps(func)
@@ -69,6 +69,73 @@ class Atom(ABC): # core base class for all possible elements of a formal system
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Atom':
         return cls(metadata=data.get("metadata", {}))
+
+@dataclass
+class FormalTheory(Generic[T], Atom):
+    top_atom: Optional[Atom] = None
+    bottom_atom: Optional[Atom] = None
+    reflexivity: Callable[[T], bool] = lambda x: x == x
+    symmetry: Callable[[T, T], bool] = lambda x, y: x == y
+    transitivity: Callable[[T, T, T], bool] = lambda x, y, z: (x == y and y == z)
+    transparency: Callable[[Callable[..., T], T, T], T] = lambda f, x, y: f(True, x, y) if x == y else None
+    operators: Dict[str, Callable[..., Any]] = field(default_factory=lambda: {
+        '⊤': lambda x: True,
+        '⊥': lambda x: False,
+        '¬': lambda a: not a,
+        '∧': lambda a, b: a and b,
+        '∨': lambda a, b: a or b,
+        '→': lambda a, b: (not a) or b,
+        '↔': lambda a, b: (a and b) or (not a and not b)
+    })
+
+    def validate(self) -> bool:
+        return (self.top_atom is None or isinstance(self.top_atom, Atom)) and \
+               (self.bottom_atom is None or isinstance(self.bottom_atom, Atom))
+
+    @validate_atom
+    def encode(self) -> bytes:
+        top_encoded = self.top_atom.encode() if self.top_atom else b''
+        bottom_encoded = self.bottom_atom.encode() if self.bottom_atom else b''
+        return struct.pack('>II', len(top_encoded), len(bottom_encoded)) + top_encoded + bottom_encoded
+
+    @validate_atom
+    def decode(self, data: bytes) -> None:
+        top_length, bottom_length = struct.unpack('>II', data[:8])
+        if top_length > 0:
+            self.top_atom = Token()  # Replace with dynamic instantiation
+            self.top_atom.decode(data[8:8+top_length])
+        if bottom_length > 0:
+            self.bottom_atom = Token()  # Replace with dynamic instantiation
+            self.bottom_atom.decode(data[8+top_length:8+top_length+bottom_length])
+
+    @validate_atom
+    @log_execution
+    def execute(self, *args: Any, **kwargs: Any) -> Any:
+        return {
+            "top_value": self.top_atom.execute(*args, **kwargs) if self.top_atom else None,
+            "bottom_value": self.bottom_atom.execute(*args, **kwargs) if self.bottom_atom else None
+        }
+
+class EventBus: # Define Event Bus (pub/sub pattern)
+    def __init__(self):
+        self._subscribers: Dict[str, List[Callable[[Atom], None]]] = {}
+
+    def subscribe(self, event_type: str, handler: Callable[[Atom], None]):
+        if event_type not in self._subscribers:
+            self._subscribers[event_type] = []
+        self._subscribers[event_type].append(handler)
+
+    def unsubscribe(self, event_type: str, handler: Callable[[Atom], None]):
+        if event_type in self._subscribers:
+            self._subscribers[event_type].remove(handler)
+
+    def publish(self, event_type: str, event: Atom):
+        if not isinstance(event, Atom):
+            raise TypeError(f"Published event must be an Atom, got {type(event)}")
+        if event_type in self._subscribers:
+            for handler in self._subscribers[event_type]:
+                handler(event)
+event_bus = EventBus()
 
 @dataclass
 class Token(Atom):
@@ -271,73 +338,6 @@ class ActionResponse(Atom):
         else:
             raise Exception(self.message)
 
-@dataclass
-class FormalTheory(Generic[T], Atom):
-    top_atom: Optional[Atom] = None
-    bottom_atom: Optional[Atom] = None
-    reflexivity: Callable[[T], bool] = lambda x: x == x
-    symmetry: Callable[[T, T], bool] = lambda x, y: x == y
-    transitivity: Callable[[T, T, T], bool] = lambda x, y, z: (x == y and y == z)
-    transparency: Callable[[Callable[..., T], T, T], T] = lambda f, x, y: f(True, x, y) if x == y else None
-    operators: Dict[str, Callable[..., Any]] = field(default_factory=lambda: {
-        '⊤': lambda x: True,
-        '⊥': lambda x: False,
-        '¬': lambda a: not a,
-        '∧': lambda a, b: a and b,
-        '∨': lambda a, b: a or b,
-        '→': lambda a, b: (not a) or b,
-        '↔': lambda a, b: (a and b) or (not a and not b)
-    })
-
-    def validate(self) -> bool:
-        return (self.top_atom is None or isinstance(self.top_atom, Atom)) and \
-               (self.bottom_atom is None or isinstance(self.bottom_atom, Atom))
-
-    @validate_atom
-    def encode(self) -> bytes:
-        top_encoded = self.top_atom.encode() if self.top_atom else b''
-        bottom_encoded = self.bottom_atom.encode() if self.bottom_atom else b''
-        return struct.pack('>II', len(top_encoded), len(bottom_encoded)) + top_encoded + bottom_encoded
-
-    @validate_atom
-    def decode(self, data: bytes) -> None:
-        top_length, bottom_length = struct.unpack('>II', data[:8])
-        if top_length > 0:
-            self.top_atom = Token()  # Replace with dynamic instantiation
-            self.top_atom.decode(data[8:8+top_length])
-        if bottom_length > 0:
-            self.bottom_atom = Token()  # Replace with dynamic instantiation
-            self.bottom_atom.decode(data[8+top_length:8+top_length+bottom_length])
-
-    @validate_atom
-    @log_execution
-    def execute(self, *args: Any, **kwargs: Any) -> Any:
-        return {
-            "top_value": self.top_atom.execute(*args, **kwargs) if self.top_atom else None,
-            "bottom_value": self.bottom_atom.execute(*args, **kwargs) if self.bottom_atom else None
-        }
-
-class EventBus: # Define Event Bus (pub/sub pattern)
-    def __init__(self):
-        self._subscribers: Dict[str, List[Callable[[Atom], None]]] = {}
-
-    def subscribe(self, event_type: str, handler: Callable[[Atom], None]):
-        if event_type not in self._subscribers:
-            self._subscribers[event_type] = []
-        self._subscribers[event_type].append(handler)
-
-    def unsubscribe(self, event_type: str, handler: Callable[[Atom], None]):
-        if event_type in self._subscribers:
-            self._subscribers[event_type].remove(handler)
-
-    def publish(self, event_type: str, event: Atom):
-        if not isinstance(event, Atom):
-            raise TypeError(f"Published event must be an Atom, got {type(event)}")
-        if event_type in self._subscribers:
-            for handler in self._subscribers[event_type]:
-                handler(event)
-event_bus = EventBus()
-
 class Operation(ActionRequest):
     def __init__(self, name: str, action: Callable, args: List[Any] = None, kwargs: Dict[str, Any] = None):
         metadata = {'name': name}
@@ -348,10 +348,6 @@ class Operation(ActionRequest):
 
     def execute(self, *args: Any, **kwargs: Any) -> Any:
         return self.action(*self.params['args'], **self.params['kwargs'])
-
-# -------------------below are runtime.py scoped classes and methods---------
-# these are runtime.py scoped classes and methods but are here because 
-# this is a monolithic file for purposes of collaboration etc.
 
 class Task:
     def __init__(self, task_id: int, operation: Operation):
@@ -464,7 +460,18 @@ class SpeculativeKernel:
             self.arenas[arena_id].local_data = local_data
         logging.info(f"State loaded from {filename}")
 
+class AppBus(EventBus):
+    def __init__(self, name: str = "AppBus"):
+        super().__init__()
+        self.logger = Logger(name)
 
+"""
+class AppModel(AtomicData):
+    def __init__(self, name: str, description: str, fields: Dict[str, Field]):
+        super().__init__(name, description, fields)
+        self.logger = Logger(name)
+        self.kernel = SymbolicKernel()
+"""
 
 @dataclass
 class MultiDimensionalAtom(Atom):
