@@ -7,6 +7,8 @@ from concurrent.futures import Future, ThreadPoolExecutor
 from contextlib import contextmanager
 from typing import Any, Callable, Dict, List, Tuple
 from src.app.llama import LlamaInterface
+from atoms import *
+from theory import *
 import logging
 Logger = logging.getLogger(__name__)
 
@@ -58,9 +60,6 @@ class SymbolicKernel:
             raise RuntimeError("Kernel is not initialized or has been stopped")
         await self.llama.generate_knowledge_base(self.kb_dir, self.knowledge_base, self.max_memory)
 
-
-
-
 class Task:
     def __init__(self, task_id: int, func: Callable, args=(), kwargs=None):
         self.task_id = task_id
@@ -77,7 +76,6 @@ class Task:
         except Exception as e:
             logging.error(f"Task {self.task_id} failed with error: {e}")
         return self.result
-
 
 class Arena:
     def __init__(self, name: str):
@@ -98,7 +96,6 @@ class Arena:
     def get(self, key: str):
         with self.lock:
             return self.local_data.get(key)
-
 
 class SpeculativeKernel:
     def __init__(self, num_arenas: int):
@@ -178,9 +175,29 @@ class SpeculativeKernel:
             self.arenas[arena_id].local_data = local_data
         logging.info(f"State loaded from {filename}")
 
+class EventBus: # Define Event Bus (pub/sub pattern)
+    def __init__(self):
+        self._subscribers: Dict[str, List[Callable[[Atom], None]]] = {}
+
+    def subscribe(self, event_type: str, handler: Callable[[Atom], None]):
+        if event_type not in self._subscribers:
+            self._subscribers[event_type] = []
+        self._subscribers[event_type].append(handler)
+
+    def unsubscribe(self, event_type: str, handler: Callable[[Atom], None]):
+        if event_type in self._subscribers:
+            self._subscribers[event_type].remove(handler)
+
+    def publish(self, event_type: str, event: Atom):
+        if event_type in self._subscribers:
+            for handler in self._subscribers[event_type]:
+                handler(event)
 
 def main():
+    event_bus = EventBus()
+    globals()["EventBus"] = EventBus
     kernel = SpeculativeKernel(3)
+    globals()["SpeculativeKernel"] = SpeculativeKernel
     kernel.run()
     kernel.submit_task(lambda x: x**2, (2,))
     kernel.submit_task(lambda x: x**2, (3,))
