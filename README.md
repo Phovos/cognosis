@@ -193,7 +193,7 @@ The Free Energy Principle suggests that biological agents minimize surprise by p
 
 ### Quantum Informatics
 
-Quantum informatics, I perhaps ignorantly posit, is the emergant ability of even-macroscopic systems, including LLMs, can entangle with higher-dimensional information. Cognitive processes like thinking, speaking, and writing collapse the wave function, allowing transitivity between real and imaginary states.
+Quantum informatics, I perhaps ignorantly posit, is the emergant ability of even-macroscopic systems, including LLMs, to entangle with higher-dimensional information. Cognitive processes like thinking, speaking, and writing collapse the wave function, allowing transitivity between real and imaginary states.
 
 ### A Practical Theory of Programming (aPToP)
 
@@ -279,17 +279,11 @@ aPToP is a formal method for reasoning about programs and systems using mathemat
     probability_and_statistics
     ```
 
-## System Components
+## Formal Methods
 
 ### Binary Representation
 
 High-dimensional data is encoded into binary representations. These representations are manipulated using formal methods to ensure consistency and clarity.
-
-### Signal Processing
-
-Signal processing techniques are applied to the binary data for analysis and feature extraction. This step leverages classical methods while incorporating quantum-inspired updates.
-
-## Formal Methods
 
 ### Binary Expressions and Operands
 
@@ -304,7 +298,7 @@ Encoding functions transform high-dimensional data into binary representations. 
 Signal processing functions operate on the binary data to extract features or perform analyses. These functions also adhere to formal methods, leveraging both classical and quantum principles.
 
 
-### Video Instructions (for cognosis oldmain branch, out of date)
+### Video Instructions
 [youtube video link](https://youtu.be/XeeYZZujvAA?si=XhxOMCypKHpWKSjM)*out of date
 
 ____
