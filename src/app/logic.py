@@ -407,21 +407,6 @@ def validator(field_name: str, validator_fn: Callable[[Any], None]) -> Callable[
 
     return decorator
 
-@dataclass
-class FormalTheory(Generic[T]):
-    reflexivity: Callable[[T], bool] = lambda x: x == x
-    symmetry: Callable[[T, T], bool] = lambda x, y: x == y
-    transitivity: Callable[[T, T, T], bool] = lambda x, y, z: (x == y) and (y == z) and (x == z)
-    transparency: Callable[[Callable[..., T], T, T], T] = lambda f, x, y: f(x, y) if x == y else None
-    case_base: Dict[str, Callable[..., bool]] = field(default_factory=lambda: {
-        '⊤': lambda x, _: x, '⊥': lambda _, y: y, 'a': lambda a, b: a if a else b,
-        '¬': lambda a: not a, '∧': lambda a, b: a and b, '∨': lambda a, b: a or b,
-        '→': lambda a, b: (not a) or b, '↔': lambda a, b: (a and b) or (not a and not b),
-        '¬∨': lambda a, b: not (a or b), '¬∧': lambda a, b: not (a and b),
-        'contrapositive': lambda a, b: (not b) or (not a)
-    })
-    tautology: Callable[[Callable[..., bool]], bool] = lambda f: f()
-
 def main():
     # Example usage
     atom1 = Atom(value=42, metadata={"name": "answer"})
