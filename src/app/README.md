@@ -1,1 +1,1 @@
-![proper_prompt](src/app/Proper_propmpting.png)
+![this:](/src/app/media/image1.png)
