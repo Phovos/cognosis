@@ -1,18 +1,19 @@
 import uuid
 import json
 import struct
-import random
 import logging
+import inspect
 from enum import Enum, auto
-from typing import Any, Dict, List, Optional, Union, Callable, TypeVar, Generic, Tuple, Type
+from typing import Any, Dict, List, Optional, Union, Callable, TypeVar, Tuple, Type
 from abc import ABC, abstractmethod
-from dataclasses import MISSING, dataclass, field, make_dataclass
-import asyncio
+from dataclasses import dataclass, field
 import queue
 import threading
-from concurrent.futures import Future, ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 
+# Initialize logger
+logging.basicConfig(level=logging.INFO)
 Logger = logging.getLogger(__name__)
 
 class Arena:
@@ -24,14 +25,14 @@ class Arena:
     def allocate(self, key: str, value: Any):
         with self.lock:
             self.local_data[key] = value
-            logging.info(f"Arena {self.name}: Allocated {key} = {value}")
+            Logger.info(f"Arena {self.name}: Allocated {key} = {value}")
 
     def deallocate(self, key: str):
         with self.lock:
             value = self.local_data.pop(key, None)
-            logging.info(f"Arena {self.name}: Deallocated {key}, value was {value}")
+            Logger.info(f"Arena {self.name}: Deallocated {key}, value was {value}")
 
-    def get(self, key: str):
+    def get(self, key: str) -> Any:
         with self.lock:
             return self.local_data.get(key)
 
@@ -85,7 +86,7 @@ class Atom:
             json_data = json.dumps(data)
             return struct.pack('>I', len(json_data)) + json_data.encode()
         except (json.JSONDecodeError, struct.error) as e:
-            logging.error(f"Error encoding Atom: {e}")
+            Logger.error(f"Error encoding Atom: {e}")
             raise
 
     @classmethod
@@ -100,11 +101,12 @@ class Atom:
             atom.dimensions = [Atom.decode(bytes.fromhex(dim)) for dim in parsed_data.get('dimensions', [])]
             return atom
         except (json.JSONDecodeError, struct.error, UnicodeDecodeError) as e:
-            logging.error(f"Error decoding Atom: {e}")
+            Logger.error(f"Error decoding Atom: {e}")
             raise
 
     def execute(self) -> Any:
-        """Execute the Atom's value."""
+        Logger.info(f"Executing Atom with value: {self.value}")
+        self.introspect()
         return self.value
 
     def add_operator(self, name: str, operator: Callable[..., Any]) -> None:
@@ -123,7 +125,24 @@ class Atom:
         """Return a string representation of the Atom."""
         return f"Atom(value={self.value}, metadata={self.metadata}, dimensions={self.dimensions})"
 
-class EventBus: # Define Event Bus (pub/sub pattern)
+    def introspect(self):
+        ReflectiveIntrospector.introspect(self)
+
+def dynamic_introspection(obj: Any):
+    Logger.info(f"Introspecting: {obj.__class__.__name__}")
+    for name, value in inspect.getmembers(obj):
+        if not name.startswith('_'):
+            if inspect.ismethod(value) or inspect.isfunction(value):
+                Logger.info(f"  Method: {name}")
+            else:
+                Logger.info(f"  Attribute: {name} = {value}")
+
+class ReflectiveIntrospector:
+    @staticmethod
+    def introspect(obj: Any):
+        dynamic_introspection(obj)
+
+class EventBus:
     def __init__(self):
         self._subscribers: Dict[str, List[Callable[[Atom], None]]] = {}
 
@@ -150,12 +169,12 @@ class Task:
         self.result = None
 
     def run(self):
-        logging.info(f"Running task {self.task_id}")
+        Logger.info(f"Running task {self.task_id}")
         try:
             self.result = self.func(*self.args, **self.kwargs)
-            logging.info(f"Task {self.task_id} completed with result: {self.result}")
+            Logger.info(f"Task {self.task_id} completed with result: {self.result}")
         except Exception as e:
-            logging.error(f"Task {self.task_id} failed with error: {e}")
+            Logger.error(f"Task {self.task_id} failed with error: {e}")
         return self.result
 
 class SpeculativeKernel:
@@ -165,34 +184,40 @@ class SpeculativeKernel:
         self.task_id_counter = 0
         self.executor = ThreadPoolExecutor(max_workers=num_arenas)
         self.running = False
+        self.event_bus = EventBus()
 
     def submit_task(self, func: Callable, args=(), kwargs=None) -> int:
         task_id = self.task_id_counter
         self.task_id_counter += 1
         task = Task(task_id, func, args, kwargs)
         self.task_queue.put(task)
-        logging.info(f"Submitted task {task_id}")
+        Logger.info(f"Submitted task {task_id}")
         return task_id
 
     def run(self):
         self.running = True
         for i in range(len(self.arenas)):
             self.executor.submit(self._worker, i)
-        logging.info("Kernel is running")
+        Logger.info("Kernel is running")
 
     def stop(self):
         self.running = False
         self.executor.shutdown(wait=True)
-        logging.info("Kernel has stopped")
+        Logger.info("Kernel has stopped")
+
+    def task_notification(self, task: Task):
+        atom = Atom(value=f"Task {task.task_id} completed")
+        self.event_bus.publish('task_complete', atom)
 
     def _worker(self, arena_id: int):
         arena = self.arenas[arena_id]
         while self.running:
             try:
                 task = self.task_queue.get(timeout=1)
-                logging.info(f"Worker {arena_id} picked up task {task.task_id}")
+                Logger.info(f"Worker {arena_id} picked up task {task.task_id}")
                 with self._arena_context(arena, "current_task", task):
                     task.run()
+                    self.task_notification(task)
             except queue.Empty:
                 continue
 
@@ -207,7 +232,7 @@ class SpeculativeKernel:
     def handle_fail_state(self, arena_id: int):
         arena = self.arenas[arena_id]
         with arena.lock:
-            logging.error(f"Handling fail state in {arena.name}")
+            Logger.error(f"Handling fail state in {arena.name}")
             arena.local_data.clear()
 
     def allocate_in_arena(self, arena_id: int, key: str, value: Any):
@@ -226,7 +251,7 @@ class SpeculativeKernel:
         state = {arena.name: arena.local_data for arena in self.arenas.values()}
         with open(filename, "w") as f:
             json.dump(state, f)
-        logging.info(f"State saved to {filename}")
+        Logger.info(f"State saved to {filename}")
 
     def load_state(self, filename: str):
         with open(filename, "r") as f:
@@ -234,7 +259,7 @@ class SpeculativeKernel:
         for arena_name, local_data in state.items():
             arena_id = int(arena_name.split("_")[1])
             self.arenas[arena_id].local_data = local_data
-        logging.info(f"State loaded from {filename}")
+        Logger.info(f"State loaded from {filename}")
 
 T = TypeVar('T', bound='BaseModel')
 
@@ -257,19 +282,23 @@ class BaseModel(ABC):
 
     @classmethod
     def validate_field(cls, value: Any, field_type: Type) -> Any:
-        if hasattr(field_type, '__origin__'):
-            if field_type.__origin__ is list and isinstance(value, list):
-                if not all(isinstance(v, field_type.__args__[0]) for v in value):
-                    raise ValidationError(f"Expected list of {field_type.__args__[0]}, got {value}")
-            elif field_type.__origin__ is dict and isinstance(value, dict):
-                key_type, val_type = field_type.__args__
-                if not all(isinstance(k, key_type) for k in value.keys()):
-                    raise ValidationError(f"Expected dict with keys of type {key_type}, got {value}")
-                if not all(isinstance(v, val_type) for v in value.values()):
-                    raise ValidationError(f"Expected dict with values of type {val_type}, got {value}")
-        else:
+        if isinstance(field_type, type):
             if not isinstance(value, field_type):
                 raise ValidationError(f"Expected {field_type}, got {type(value)}")
+        elif hasattr(field_type, '__origin__'):
+            origin = field_type.__origin__
+            if origin is list and isinstance(value, list):
+                for v in value:
+                    cls.validate_field(v, field_type.__args__[0])
+            elif origin is dict and isinstance(value, dict):
+                key_type, val_type = field_type.__args__
+                for k, v in value.items():
+                    cls.validate_field(k, key_type)
+                    cls.validate_field(v, val_type)
+            else:
+                raise ValidationError(f"Unsupported type: {field_type}")
+        else:
+            raise ValidationError(f"Unsupported type: {field_type}")
         return value
 
     def dict(self) -> Dict[str, Any]:
@@ -332,14 +361,13 @@ class FieldDefinition:
     def __init__(self, type_: Type, default: Any = None, required: bool = True):
         if not isinstance(type_, type):
             raise TypeError("type_ must be a valid type")
-        elif not isinstance(default, type(default)):
+        elif default is not None and not isinstance(default, type_):
             raise TypeError("default must be of the same type as type_")
         elif not isinstance(required, bool):
             raise TypeError("required must be a boolean")
-        else:
-            self.type = type_
-            self.default = default
-            self.required = required
+        self.type = type_
+        self.default = default
+        self.required = required
 
 class DataType(Enum):
     INT = auto()
@@ -362,18 +390,19 @@ TypeMap = {
 
 datum = Union[int, float, str, bool, None, List[Any], Tuple[Any, ...]]
 
-def get_type(value: datum) -> DataType:
+def get_type(value: datum) -> Optional[DataType]:
     if isinstance(value, list):
         return DataType.LIST
     if isinstance(value, tuple):
         return DataType.TUPLE
-    return TypeMap[type(value)]
+    return TypeMap.get(type(value))
 
 def validate_datum(value: Any) -> bool:
     return get_type(value) is not None
 
 def process_datum(value: datum) -> str:
-    return f"Processed {get_type(value).name}: {value}"
+    dtype = get_type(value)
+    return f"Processed {dtype.name}: {value}" if dtype else "Unknown data type"
 
 def safe_process_input(value: Any) -> str:
     return "Invalid input type" if not validate_datum(value) else process_datum(value)
@@ -407,14 +436,33 @@ def validator(field_name: str, validator_fn: Callable[[Any], None]) -> Callable[
 
     return decorator
 
+def perform_task_example(task_data: Dict[str, Any]) -> str:
+    return f"Processed {task_data}" # UserMain is a good place re-implement.
+
 def main():
+    kernel = SpeculativeKernel(num_arenas=3)
+    kernel.run()
+
+    for i in range(5):
+        kernel.submit_task(perform_task_example, args=({"task_id": i},))
+
+    try:
+        while True:
+            pass
+    except KeyboardInterrupt:
+        Logger.info("Received KeyboardInterrupt, shutting down kernel...")
+        try:
+            kernel.stop()
+        except KeyboardInterrupt:
+            Logger.warning("Forcefully terminating due to repeated KeyboardInterrupt")
+
     # Example usage
     atom1 = Atom(value=42, metadata={"name": "answer"})
     atom2 = Atom(value="Hello, World!")
-    
+
     print(f"Atom 1: {atom1}")
     print(f"Atom 2: {atom2}")
-    
+
     # Example of data processing
     data = [42, "string", True, None, [1, 2, 3], (4, 5, 6)]
     for item in data:

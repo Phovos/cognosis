@@ -13,7 +13,7 @@ import marshal
 import types
 import queue
 
-from logic import *
+from src.app.logic import *
 
 
 class TaskQueue:
@@ -170,10 +170,10 @@ class Theory(Atom):
 
 @dataclass
 class FormalTheory(Generic[T]):
-    reflexivity: Callable[[T], bool] = lambda x: x == x
-    symmetry: Callable[[T, T], bool] = lambda x, y: x == y
-    transitivity: Callable[[T, T, T], bool] = lambda x, y, z: (x == y) and (y == z) and (x == z)
-    transparency: Callable[[Callable[..., T], T, T], T] = lambda f, x, y: f(x, y) if x == y else None
+    reflexivity: Callable[[T], bool] = field(default_factory=lambda: lambda x: x == x)
+    symmetry: Callable[[T, T], bool] = field(default_factory=lambda: lambda x, y: x == y)
+    transitivity: Callable[[T, T, T], bool] = field(default_factory=lambda: lambda x, y, z: (x == y) and (y == z) and (x == z))
+    transparency: Callable[[Callable[..., T], T, T], T] = field(default_factory=lambda: lambda f, x, y: f(x, y) if x == y else None)
     case_base: Dict[str, Callable[..., bool]] = field(default_factory=lambda: {
         '⊤': lambda x, _: x, '⊥': lambda _, y: y, 'a': lambda a, b: a if a else b,
         '¬': lambda a: not a, '∧': lambda a, b: a and b, '∨': lambda a, b: a or b,
@@ -181,7 +181,7 @@ class FormalTheory(Generic[T]):
         '¬∨': lambda a, b: not (a or b), '¬∧': lambda a, b: not (a and b),
         'contrapositive': lambda a, b: (not b) or (not a)
     })
-    tautology: Callable[[Callable[..., bool]], bool] = lambda f: f()
+    tautology: Callable[[Callable[..., bool]], bool] = field(default_factory=lambda: lambda f: f())
 
     MAGIC_CONSTANT: ClassVar[bytes] = b'THY'
 
@@ -282,10 +282,12 @@ task_queue.start_processing()
 # Demonstrating the use of FormalTheory
 
 theory = FormalTheory()
-theory.add_axiom(name="MyAxiom", description="My axiom description", theory=theory)
-hypothesis = FormalTheory
-my_hypothesis = hypothesis.add_axiom(name="MyHypothesis", description="My hypothesis description", theory=theory)
+theory.add_axiom("MyAxiom", lambda x: x)
+hypothesis = FormalTheory()
+hypothesis.add_axiom("MyHypothesis", lambda x: x)
 anti_theory = theory.get_anti_theory()
 encoded_theory = theory.encode()
-encoded_threading = threading.Thread(target=task_queue.process_tasks).start()
-decode_theory = FormalTheory.decode(encoded_threading.Thread(target=task_queue.process_tasks).start())
+encoded_threading = threading.Thread(target=task_queue.process_tasks)
+encoded_threading.start()
+decode_theory = FormalTheory()
+decode_theory.decode(encoded_theory)
