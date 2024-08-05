@@ -1,3 +1,7 @@
+# Lambda Dracula RFC
+
+Lambda dracula decomposes any function into its constituent parts and then reassembles them in a way that allows for the function to replicate itself.
+
 ; Lambda Dracula RFC-style Definition
 
 ; Core Concepts
