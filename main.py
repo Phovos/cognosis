@@ -1,4 +1,3 @@
-# ~/main.py - Main entry point for Cognosis, combining all setup and execution logic
 import argparse
 import logging
 import pathlib
@@ -187,13 +186,28 @@ def prompt_for_mode() -> str:
         choice = input("Choose setup mode: [d]evelopment, [n]on-development or [p]ip only? ").lower()
         if choice in ["d", "n", "p"]:
             return choice
-        logging.info("Invalid choice, please enter 'd', 'n' or 'p'.")
+        else:
+            print("Invalid choice. Please enter 'd', 'n', or 'p'.")
 
 def introspect():
-    """Introspect the current state and print results"""
-    logging.info("Introspection results:")
-    for key, value in state.items():
-        logging.info(f"{key}: {'✅' if value else '❌'}")
+    """Introspects the installed modules"""
+    logging.info("Introspecting installed modules...")
+    introspect_str = ""
+    for module_name in ["pdm", "transformers"]:
+        try:
+            module = __import__(module_name)
+            introspect_str += f"Module {module_name} is installed.\n"
+        except ImportError:
+            introspect_str += f"Module {module_name} is not installed.\n"
+    logging.info(introspect_str)
+
+def main():
+    logger = Logger(name="Main")
+    mode = prompt_for_mode()
+    setup_app(mode)
+
+if __name__ == "__main__":
+    main()
 
 async def usermain():
     try:
@@ -204,26 +218,3 @@ async def usermain():
     finally:
         logging.info("usermain() has control of the kernel but nothing to do. Exiting...")
     json.dump(state, sys.stdout, indent=4)
-
-def main(usermain):
-    parser = argparse.ArgumentParser(description="Setup and run Cognosis project")
-    parser.add_argument("-m", "--mode", choices=["dev", "non-dev", "pip"], help="Setup mode: 'dev', 'non-dev' or 'pip'")
-    parser.add_argument("-u", "--skip-user-main", action="store_true", help="Skip running the user-defined main function")
-    args = parser.parse_args()
-
-    mode = args.mode
-    if not mode:
-        mode = prompt_for_mode()
-
-    setup_app(mode)
-
-    if not args.skip_user_main:
-        try:
-            asyncio.run(usermain())
-        except Exception as e:
-            logging.error(f"An error occurred while running usermain: {str(e)}", exc_info=True)
-
-    introspect()
-
-if __name__ == "__main__":
-    main(usermain)
