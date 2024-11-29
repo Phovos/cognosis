@@ -1135,6 +1135,84 @@ class QuantumRuntime(QuantumAtom[Any, Any, Any]):
         self.children.clear()
         self.quantum_metadata.state = QuantumState.DECOHERENT
 
+def setup_app(mode: str):
+    """Setup the application based on the specified mode using PDM, not UV/pip/mamba or conda"""
+    if mode == "p":
+        ensure_pip_dependencies()
+    else:
+        if not state["pdm_installed"]:
+            ensure_pdm()
+        if not state["virtualenv_created"]:
+            ensure_virtualenv()
+        if not state["dependencies_installed"]:
+            ensure_dependencies()
+        if mode == "dev":
+            ensure_lint()
+            ensure_format()
+            ensure_tests()
+            ensure_benchmarks()
+            ensure_pre_commit()
+    introspect()
+def ensure_pdm():
+    """Ensure PDM is installed"""
+    if not state["pdm_installed"]:
+        try:
+            subprocess.run("pdm --version", shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            state["pdm_installed"] = True
+            logging.info("PDM is already installed.")
+        except subprocess.CalledProcessError:
+            logging.info("PDM not found, installing PDM...")
+            run_command("pip install pdm", shell=True)
+            state["pdm_installed"] = True
+def ensure_virtualenv():
+    """Ensure the virtual environment is created"""
+    if not state["virtualenv_created"]:
+        if not os.path.exists(".venv"):
+            run_command("pdm venv create", shell=True)
+        state["virtualenv_created"] = True
+        logging.info("Virtual environment already exists.")
+def ensure_dependencies():
+    """Install dependencies"""
+    if not state["dependencies_installed"]:
+        run_command("pdm install --project ./", shell=True)
+        state["dependencies_installed"] = True
+def ensure_pip_dependencies():
+    """Install dependencies with pip"""
+    if not state["dependencies_installed"]:
+        run_command("pip install -r requirements.txt", shell=True)
+        state["dependencies_installed"] = True
+def ensure_lint():
+    """Run linting tools"""
+    run_command("pdm run flake8 .", shell=True)
+    run_command("pdm run black --check .", shell=True)
+    run_command("pdm run mypy .", shell=True)
+    state["lint_passed"] = True
+def ensure_format():
+    """Format the code"""
+    run_command("pdm run black .", shell=True)
+    run_command("pdm run isort .", shell=True)
+    state["code_formatted"] = True
+def ensure_tests():
+    """Run tests"""
+    run_command("pdm run pytest", shell=True)
+    state["tests_passed"] = True
+def ensure_benchmarks():
+    """Run benchmarks"""
+    run_command("pdm run python src/bench/bench.py", shell=True)
+    state["benchmarks_run"] = True
+def ensure_pre_commit():
+    """Install pre-commit hooks"""
+    run_command("pdm run pre-commit install", shell=True)
+    state["pre_commit_installed"] = True
+def prompt_for_mode() -> str:
+    """Prompt the user to choose between development and non-development setup"""
+    while True:
+        choice = input("Choose setup mode: [d]evelopment, [n]on-development or [p]ip only? ").lower()
+        if choice in ["d", "n", "p"]:
+            return choice
+        else:
+            print("Invalid choice. Please enter 'd', 'n', or 'p'.")
+
 def main():
     """Main entry point for the application."""
     root_namespace = RuntimeNamespace(name="root")
