@@ -82,7 +82,9 @@ class SyntaxKernel:
 
     async def analyze_token(self, token: str) -> str:
         if len(token.split()) > 5:
+# ===================================================---------------------------------------------------
             response = await self.fetch_from_api("/api/analyze", {"model": "gemma2", "query": token})
+# ===================================================---------------------------------------------------
             return response.get('response', '') if response else "Analysis unavailable."
         return token
 
@@ -218,7 +220,7 @@ async def main():
     rag = LocalRAGSystem()
     await rag.add_document("Neural networks are computing systems inspired by biological neural networks.", {"type": "definition", "topic": "AI"})
     # Import initial knowledge base
-    await rag.import_documents_from_file('knowledge_base.txt')
+    await rag.import_documents_from_file('README.md')
 
     # await interactive_mode(rag)
     
