@@ -1,0 +1,16 @@
+{
+    "name": "Python 3.13 with UV and Ruff",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "settings": {
+        "python.pythonPath": "~/.pyenv/versions/3.13.0/bin/python", // or adjust path based on install
+        "python.linting.enabled": true,
+        "python.linting.ruffEnabled": true
+    },
+    "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff"
+    ],
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "forwardPorts": [],
+    "remoteUser": "vscode"
+}
