@@ -10,9 +10,9 @@ All directories which contain markdown files are to include a `/media/` sub dire
 
 To enable horrors such as this:
 
-![this:](/media/image.png)
+![this:](/image.png)
 
-    `! [ ... ] ( /media/image.png )` (no spaces)
+    `! [ ... ] ( /image.png )` (no spaces)
 
  - [obsidian-markdown and associative 'knowledge base' README](/src/obkb/README.md)
 

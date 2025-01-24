@@ -1,1 +1,0 @@
-![this:](/src/app/media/image1.png)
