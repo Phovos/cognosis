@@ -23,8 +23,8 @@ cleanup = "src.utils.cleanup:main"
 [tool.uv]
 venv.path = ".venv"
 
-[tool.env.toml]
-path = "{working_dir}/.devcontainer/env.toml"
+[tool.env]
+path = "{working_dir}/.devcontainer/.env"
 
 [project.optional-dependencies]
 dev = [
@@ -71,3 +71,14 @@ line-length = 88
 ignore = ["W503"]
 select = ["E", "F", "W", "B"]
 exclude = ["build/", "dist/", ".venv/"]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.per-file-ignores]
+# Allow unused imports in __init__.py files.
+"__init__.py" = ["F401"]

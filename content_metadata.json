@@ -1,0 +1,1502 @@
+{
+  "main.py": {
+    "path": "/workspaces/cognosis/main.py",
+    "mime_type": "application/python",
+    "size": 61751,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "4f0ed1691b9255dc2bddd38b060da71d2052a58b5cfcc7ae6eb3563e3cead715",
+    "symlinks": [],
+    "has_content": false
+  },
+  "LICENSE": {
+    "path": "/workspaces/cognosis/LICENSE",
+    "mime_type": "application/octet-stream",
+    "size": 1063,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.059735",
+    "hash": "e5469f405b506c8835e9b6a384763d71726d3a02656a5d8858c3fc579b103813",
+    "symlinks": [],
+    "has_content": false
+  },
+  "pyproject.toml": {
+    "path": "/workspaces/cognosis/pyproject.toml",
+    "mime_type": "application/octet-stream",
+    "size": 1741,
+    "created": "2025-01-27T00:06:47.965270",
+    "modified": "2025-01-27T00:06:47.965270",
+    "hash": "c38879c6217214aeb9bdda583ae63d46d500e574a7fd3e766a299fe50ef3b316",
+    "symlinks": [],
+    "has_content": false
+  },
+  "README.md": {
+    "path": "/workspaces/cognosis/README.md",
+    "mime_type": "text/markdown",
+    "size": 17923,
+    "created": "2025-01-24T02:04:55.794301",
+    "modified": "2025-01-24T02:04:55.794301",
+    "hash": "f1f3fb54c37bd99a4a8f426e8415378eaf4ac139045e18d18fb9d9eceff3bcd4",
+    "symlinks": [],
+    "has_content": true
+  },
+  "__init__.py": {
+    "path": "/workspaces/cognosis/__init__.py",
+    "mime_type": "application/python",
+    "size": 52,
+    "created": "2025-01-26T02:48:10.694700",
+    "modified": "2025-01-26T02:48:10.694700",
+    "hash": "5a5ec267e90003839441a7d51fccd1e7ec369d237551768a1f466c738a7a6bda",
+    "symlinks": [],
+    "has_content": false
+  },
+  "image.png": {
+    "path": "/workspaces/cognosis/image.png",
+    "mime_type": "image/png",
+    "size": 1151193,
+    "created": "2025-01-24T02:04:59.034301",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "e5be136d6cb321ed12c555f03e614cfefaccfaa1a30927f292c378b3941da0ae",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".gitignore": {
+    "path": "/workspaces/cognosis/.gitignore",
+    "mime_type": "application/octet-stream",
+    "size": 3211,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.059735",
+    "hash": "bbb9f4ef1bec024d0e6dbed984209213a7f20b5cbcb76b9a4fc643bb12e30050",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/loadspec.py": {
+    "path": "/workspaces/cognosis/src/loadspec.py",
+    "mime_type": "application/python",
+    "size": 6795,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "480b3f89703de90186080fb2cbca2668f569c07f6cfd79d58b906e9e4a487ba8",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/morpho.py": {
+    "path": "/workspaces/cognosis/src/morpho.py",
+    "mime_type": "application/python",
+    "size": 15735,
+    "created": "2025-01-24T03:27:52.830108",
+    "modified": "2025-01-03T06:13:56.071735",
+    "hash": "4584e7f5ffae59f5b7529fb20838e81db5937aeec7f2031891a4a1525701c46b",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__init__.py": {
+    "path": "/workspaces/cognosis/src/__init__.py",
+    "mime_type": "application/python",
+    "size": 902,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "5eb6356c62ca70a9f8aac20fc0c7d841348f726a43a77435e282573cede921f7",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/rootboot.py": {
+    "path": "/workspaces/cognosis/src/rootboot.py",
+    "mime_type": "application/python",
+    "size": 2352,
+    "created": "2025-01-24T03:44:23.290070",
+    "modified": "2025-01-24T03:44:23.290070",
+    "hash": "d5253a252e64704a533a5bc2c60c206c196a1facf3dca4307dc59f1668f715f5",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/merkseries.py": {
+    "path": "/workspaces/cognosis/src/merkseries.py",
+    "mime_type": "application/python",
+    "size": 10913,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.071735",
+    "hash": "2e54594c18eea9faddec9d4566598c1d8af40ebfe4b7722cdb61e41fc5ae3e6b",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/src/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 908,
+    "created": "2025-01-28T01:07:32.702962",
+    "modified": "2025-01-28T01:07:32.702962",
+    "hash": "3b4b96a18f7cc8a02b9a0cbf004c8a14fb23b40e7019a26d054c809275f4493e",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__pycache__/merkseries.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/src/__pycache__/merkseries.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 11646,
+    "created": "2025-01-28T01:07:32.746963",
+    "modified": "2025-01-28T01:07:32.746963",
+    "hash": "580896792cf2ad7ab191aaeab27e5b3eaebd4c6d0cb3be1b1126a178c2a4c7e3",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__pycache__/rootboot.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/src/__pycache__/rootboot.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 3143,
+    "created": "2025-01-28T01:07:32.738962",
+    "modified": "2025-01-28T01:07:32.738962",
+    "hash": "e8420b3e8472de9248373aecf88c6bcb6b29a770fc3579a3cb3ccb313f0cc7ad",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__pycache__/loadspec.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/src/__pycache__/loadspec.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 6092,
+    "created": "2025-01-28T01:07:32.610962",
+    "modified": "2025-01-28T01:07:32.610962",
+    "hash": "82b98a084a199c24df2dbb193ee0fa9c50295bfebd2aed716de057dd96fc0cd9",
+    "symlinks": [],
+    "has_content": false
+  },
+  "src/__pycache__/morpho.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/src/__pycache__/morpho.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 18272,
+    "created": "2025-01-28T01:07:32.618963",
+    "modified": "2025-01-28T01:07:32.618963",
+    "hash": "a1a0826debe7679baf4eda2d5721153c5d4ee03879ee6372411225684c2c5dce",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".devcontainer/.bashrc": {
+    "path": "/workspaces/cognosis/.devcontainer/.bashrc",
+    "mime_type": "application/octet-stream",
+    "size": 13224,
+    "created": "2025-01-26T02:48:10.686700",
+    "modified": "2025-01-26T02:48:10.686700",
+    "hash": "c477626eb4959488f95516206895f0ccccc84281058de89a45058fffe0031160",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".devcontainer/devcontainer.json": {
+    "path": "/workspaces/cognosis/.devcontainer/devcontainer.json",
+    "mime_type": "application/json",
+    "size": 1228,
+    "created": "2025-01-26T02:48:10.690700",
+    "modified": "2025-01-26T02:48:10.690700",
+    "hash": "64fdac443e9a792c4ee6119e9e719bc2447e3a55fcdba7796e92075742eb9140",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".devcontainer/.env": {
+    "path": "/workspaces/cognosis/.devcontainer/.env",
+    "mime_type": "application/octet-stream",
+    "size": 0,
+    "created": "2025-01-27T00:00:22.249272",
+    "modified": "2025-01-27T00:00:22.249272",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".devcontainer/setup.sh": {
+    "path": "/workspaces/cognosis/.devcontainer/setup.sh",
+    "mime_type": "text/x-sh",
+    "size": 683,
+    "created": "2025-01-26T02:48:10.690700",
+    "modified": "2025-01-26T02:48:10.690700",
+    "hash": "7a301ca5e347250831792b4551986d848a593907b4160a6f95070748b5bdfcc8",
+    "symlinks": [],
+    "has_content": true
+  },
+  ".github/workflows/codeql.yml": {
+    "path": "/workspaces/cognosis/.github/workflows/codeql.yml",
+    "mime_type": "application/octet-stream",
+    "size": 4314,
+    "created": "2025-01-26T02:48:10.666700",
+    "modified": "2025-01-26T02:48:10.666700",
+    "hash": "3f838b74f5a58c0bbc5ca7e33c6da2de4e9009cfc216c2012f54de4302f4c3fb",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".github/workflows/cognosis_app.yaml": {
+    "path": "/workspaces/cognosis/.github/workflows/cognosis_app.yaml",
+    "mime_type": "application/octet-stream",
+    "size": 0,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/stats.rtk": {
+    "path": "/workspaces/cognosis/.scratch/stats.rtk",
+    "mime_type": "application/octet-stream",
+    "size": 3416,
+    "created": "2025-01-24T03:26:37.230111",
+    "modified": "2025-01-03T06:13:56.075735",
+    "hash": "de3f6f474688f835a72f3fa25bade012c739446a96c75278d5363a319391078e",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/pp.py": {
+    "path": "/workspaces/cognosis/.scratch/quine/pp.py",
+    "mime_type": "application/python",
+    "size": 704,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.075735",
+    "hash": "6a587fa307325b4d86eed022ae8c6b0dc84ef3c2c407c5822193b332685e7052",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/qq.py": {
+    "path": "/workspaces/cognosis/.scratch/quine/qq.py",
+    "mime_type": "application/python",
+    "size": 2562,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.075735",
+    "hash": "341a7553cbaf58c2e89c667bbcff7078bd3b7ce8a6896b2ba3cef32f041b7a17",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/quine.py": {
+    "path": "/workspaces/cognosis/.scratch/quine/quine.py",
+    "mime_type": "application/python",
+    "size": 743,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.075735",
+    "hash": "11ddd8edcada5cf58ea349ba7a31382fc592b5077b348333b8dd7164d2f7c907",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/README.md": {
+    "path": "/workspaces/cognosis/.scratch/quine/README.md",
+    "mime_type": "text/markdown",
+    "size": 3638,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.071735",
+    "hash": "b74f1392a5502bd776b6eeab91a69170cef147f53a9aa8624adad71115615a9d",
+    "symlinks": [],
+    "has_content": true
+  },
+  ".scratch/quine/__init__.py": {
+    "path": "/workspaces/cognosis/.scratch/quine/__init__.py",
+    "mime_type": "application/python",
+    "size": 0,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.071735",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/dracula.md": {
+    "path": "/workspaces/cognosis/.scratch/quine/dracula.md",
+    "mime_type": "text/markdown",
+    "size": 8546,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.075735",
+    "hash": "84ef62012379df4626eee6f4ffe6221fc19a9681462488e109f75045914dfdd1",
+    "symlinks": [],
+    "has_content": true
+  },
+  ".scratch/quine/__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/.scratch/quine/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 140,
+    "created": "2025-01-28T01:07:32.786963",
+    "modified": "2025-01-28T01:07:32.786963",
+    "hash": "6619ad81fbdb82ee5a3cf677ee8196829b75ef52a2f7cd64cb700828c5d24de5",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/__pycache__/pp.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/.scratch/quine/__pycache__/pp.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 799,
+    "created": "2025-01-28T01:07:32.774962",
+    "modified": "2025-01-28T01:07:32.774962",
+    "hash": "ac9c9b4d0309771a7348492986a14888d4f980c1fb69eb9cfbf9cf0aed48f8bd",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/__pycache__/quine.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/.scratch/quine/__pycache__/quine.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 897,
+    "created": "2025-01-28T01:07:32.782963",
+    "modified": "2025-01-28T01:07:32.782963",
+    "hash": "8df5f2ae86a8bacae97840607bbde6131fa63237249bc9c2ef0e9238b23f562a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".scratch/quine/__pycache__/qq.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/.scratch/quine/__pycache__/qq.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 2341,
+    "created": "2025-01-28T01:07:32.778963",
+    "modified": "2025-01-28T01:07:32.778963",
+    "hash": "5787ab1bc0883809731ced1dec9600fa3539d04dc73186895c58f2a013499677",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/dockerd_ubu2204.ps1": {
+    "path": "/workspaces/cognosis/source/dockerd_ubu2204.ps1",
+    "mime_type": "application/octet-stream",
+    "size": 3023,
+    "created": "2025-01-24T03:25:56.210113",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "c0144c7441f2c576dc9159d470a967e709a3d89c4ebe26a086ac60707f0df9ab",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/provisioning.sh": {
+    "path": "/workspaces/cognosis/source/provisioning.sh",
+    "mime_type": "text/x-sh",
+    "size": 799,
+    "created": "2025-01-24T03:26:08.530112",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "6770bb93f78ac89df62dae3e3149ee12611003d410f27f444b46e8e5c39850c0",
+    "symlinks": [],
+    "has_content": true
+  },
+  "source/pyproject.toml": {
+    "path": "/workspaces/cognosis/source/pyproject.toml",
+    "mime_type": "application/octet-stream",
+    "size": 102,
+    "created": "2025-01-27T00:02:54.601271",
+    "modified": "2025-01-27T00:02:54.601271",
+    "hash": "1292404ba00219bcda311f512244fc655ea70e2b9b7ed9ddad2635938d3cadd2",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/README.md": {
+    "path": "/workspaces/cognosis/source/README.md",
+    "mime_type": "text/markdown",
+    "size": 2453,
+    "created": "2025-01-24T03:25:59.326113",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "3edc210f2594406710ae028d9b02948405d714446c052cf20c526db43b955fa2",
+    "symlinks": [],
+    "has_content": true
+  },
+  "source/py313_llama_client.py": {
+    "path": "/workspaces/cognosis/source/py313_llama_client.py",
+    "mime_type": "application/python",
+    "size": 10445,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.063735",
+    "hash": "5314166d165e0a5eb7d5e2661b2fa59995991d4c4f353af5d0203cb4f7dcbc00",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/emain.py": {
+    "path": "/workspaces/cognosis/source/external/emain.py",
+    "mime_type": "application/python",
+    "size": 184,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "c840f604bf77bc52b379d9b3afc89392be49e8563ea4bea12653290b0a0c7358",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/README.md": {
+    "path": "/workspaces/cognosis/source/external/README.md",
+    "mime_type": "text/markdown",
+    "size": 4386,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "d050b54122e2b82aa17bc853002a1810ecd362bcd098e2478cbc7ef59e28f4d2",
+    "symlinks": [],
+    "has_content": true
+  },
+  "source/external/umain.py": {
+    "path": "/workspaces/cognosis/source/external/umain.py",
+    "mime_type": "application/python",
+    "size": 2154,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "d174380ff25c8145ba6d6a0872dfd3cdd25c4ff22bf7d5305d1a255dcc2eae60",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/transformers/token.py": {
+    "path": "/workspaces/cognosis/source/external/transformers/token.py",
+    "mime_type": "application/python",
+    "size": 2075,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "8330547efcd43363206cfd432ba8664e37d739848cdc6af57061a592287986ef",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/transformers/__init__.py": {
+    "path": "/workspaces/cognosis/source/external/transformers/__init__.py",
+    "mime_type": "application/python",
+    "size": 0,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/transformers/__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/external/transformers/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 154,
+    "created": "2025-01-28T01:07:32.826962",
+    "modified": "2025-01-28T01:07:32.826962",
+    "hash": "736a5b4f916da3231bc685bdd111253c4c271f481dcb68598c5b54cf60a5fa3e",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/transformers/__pycache__/token.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/external/transformers/__pycache__/token.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 2734,
+    "created": "2025-01-28T01:07:32.826962",
+    "modified": "2025-01-28T01:07:32.826962",
+    "hash": "ed7c1f21710c3b7cf542e2b2a4389910bb6c41b80343806140fa2791b1b6f20e",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/__pycache__/umain.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/external/__pycache__/umain.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 2102,
+    "created": "2025-01-28T01:07:32.822963",
+    "modified": "2025-01-28T01:07:32.822963",
+    "hash": "21b5960de9f1e6fd9e7982cce4978e7be135a113c804fb910ae1cfad6dbf14a9",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/external/__pycache__/emain.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/external/__pycache__/emain.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 138,
+    "created": "2025-01-28T01:07:32.822963",
+    "modified": "2025-01-28T01:07:32.822963",
+    "hash": "26a927f2cc8aa30dd2cb359b1225a6f156cd7de88177f68f68bbad620d56bdb1",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/api/README.md": {
+    "path": "/workspaces/cognosis/source/api/README.md",
+    "mime_type": "text/markdown",
+    "size": 14103,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "dd070feb9ffd5c395035621e3b316f36b98380d9d2d853b3b3dd542c6aeff709",
+    "symlinks": [],
+    "has_content": true
+  },
+  "source/api/__init__.py": {
+    "path": "/workspaces/cognosis/source/api/__init__.py",
+    "mime_type": "application/python",
+    "size": 0,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/api/__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/api/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 136,
+    "created": "2025-01-28T01:07:32.830962",
+    "modified": "2025-01-28T01:07:32.830962",
+    "hash": "9efcdec7ba118f3726b1e6c6dad45f530ca2859debc6bc9175bf2fe06ef3f1d3",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/cntnt.py": {
+    "path": "/workspaces/cognosis/source/utils/cntnt.py",
+    "mime_type": "application/python",
+    "size": 3640,
+    "created": "2025-01-28T01:07:27.066962",
+    "modified": "2025-01-28T01:07:27.066962",
+    "hash": "8367b45d5db62fe5e8906bc50b835b3414ad48d6973cbff458ab9c338a5fbb42",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/yyaammll.py": {
+    "path": "/workspaces/cognosis/source/utils/yyaammll.py",
+    "mime_type": "application/python",
+    "size": 1090,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "dc0aee12a2f11abe75fcf612e24c33176214950ca72fe8cf7fe4a1bc3d3e4fac",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/maths.py": {
+    "path": "/workspaces/cognosis/source/utils/maths.py",
+    "mime_type": "application/python",
+    "size": 6149,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "f0322dd6e6e655ee9e548ba1a5d2d8cd4c0e4d1ef059b30cf2d00c4a7ceeeab5",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__init__.py": {
+    "path": "/workspaces/cognosis/source/utils/__init__.py",
+    "mime_type": "application/python",
+    "size": 0,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/complexity.py": {
+    "path": "/workspaces/cognosis/source/utils/complexity.py",
+    "mime_type": "application/python",
+    "size": 3763,
+    "created": "2025-01-26T03:07:26.638688",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "3df1721878663b9d9091b1a7a04889d0d84f01f51cb4a70a2b887e5ff68c998c",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/cleanup.py": {
+    "path": "/workspaces/cognosis/source/utils/cleanup.py",
+    "mime_type": "application/python",
+    "size": 2930,
+    "created": "2025-01-24T03:05:14.758161",
+    "modified": "2025-01-24T03:05:14.758161",
+    "hash": "d2fe39de6f63621fe90aabb7e33b3730be58db13d555300a678ba966a13a9cc1",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 138,
+    "created": "2025-01-28T01:07:32.838963",
+    "modified": "2025-01-28T01:07:32.838963",
+    "hash": "e7ff90129a5a26424d01b2e8d11a974cdc3c1e6e39444f385a5f5361cb95aaba",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/cleanup.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/cleanup.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 2773,
+    "created": "2025-01-28T01:07:32.850962",
+    "modified": "2025-01-28T01:07:32.850962",
+    "hash": "8fcd0b2dfa51168e5932725845f90d434864a0f72ce9e111ada549222822c608",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/cntnt.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/cntnt.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 4567,
+    "created": "2025-01-28T01:07:32.834963",
+    "modified": "2025-01-28T01:07:32.834963",
+    "hash": "7082359bea4c3493d6999511915fcb0d9892218cf7615e6e330a71cdcd6f0c05",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/yyaammll.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/yyaammll.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 779,
+    "created": "2025-01-28T01:07:32.834963",
+    "modified": "2025-01-28T01:07:32.834963",
+    "hash": "4bba7ee6c1ddbf12ba7e0d397f9951d307c58f5ec59ade035f73a247b3c70240",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/complexity.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/complexity.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 4218,
+    "created": "2025-01-28T01:07:32.846962",
+    "modified": "2025-01-28T01:07:32.842963",
+    "hash": "2c3fbe7391d1c6c99e35ab140431b21c46413fda354ccb0a730105f66dc6633c",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/utils/__pycache__/maths.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/utils/__pycache__/maths.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 8441,
+    "created": "2025-01-28T01:07:32.838963",
+    "modified": "2025-01-28T01:07:32.838963",
+    "hash": "f0af0fbdc10df97c8ac4e54618aeff5ac3b12a2e3cd3f68c1a14b67bdcb0745d",
+    "symlinks": [],
+    "has_content": false
+  },
+  "source/__pycache__/py313_llama_client.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/source/__pycache__/py313_llama_client.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 11431,
+    "created": "2025-01-28T01:07:32.798963",
+    "modified": "2025-01-28T01:07:32.798963",
+    "hash": "3fb60d379ddf8be4c33ccedc8aaa6ae59e2aa9d3500bdb203746e69aad597256",
+    "symlinks": [],
+    "has_content": false
+  },
+  "__pycache__/__init__.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/__pycache__/__init__.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 190,
+    "created": "2025-01-28T01:07:32.222962",
+    "modified": "2025-01-28T01:07:32.222962",
+    "hash": "68a327433b673d1bfb3a661df1e05e84ff9ffc74ee4cf6c80adeb6557c9d0984",
+    "symlinks": [],
+    "has_content": false
+  },
+  "__pycache__/main.cpython-310.pyc": {
+    "path": "/workspaces/cognosis/__pycache__/main.cpython-310.pyc",
+    "mime_type": "application/x-python-code",
+    "size": 49515,
+    "created": "2025-01-28T01:07:32.166962",
+    "modified": "2025-01-28T01:07:32.166962",
+    "hash": "e596308f969b82a1c2882e89058de71276b357797f1b6a017fbfd15f65f32b01",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/COMMIT_EDITMSG": {
+    "path": "/workspaces/cognosis/.git/COMMIT_EDITMSG",
+    "mime_type": "application/octet-stream",
+    "size": 356,
+    "created": "2025-01-26T23:01:18.141295",
+    "modified": "2025-01-26T23:01:18.141295",
+    "hash": "042124453a7a91720f98c51e577ed0e62cc5ea83ded4b6479ae78c63fe6070a7",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/FETCH_HEAD": {
+    "path": "/workspaces/cognosis/.git/FETCH_HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 100,
+    "created": "2025-01-26T23:01:27.261295",
+    "modified": "2025-01-26T23:01:27.261295",
+    "hash": "c22d763e0961c8566ccfe295d2270aa695ab10554b13934e4891edb0c96a2e00",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/HEAD": {
+    "path": "/workspaces/cognosis/.git/HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 27,
+    "created": "2025-01-26T02:48:10.706700",
+    "modified": "2025-01-26T02:48:10.706700",
+    "hash": "126a9bad04fe4d21077cb2f09d61e2d7b29ad39820652c1bc0b3f432bc8398df",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/description": {
+    "path": "/workspaces/cognosis/.git/description",
+    "mime_type": "application/octet-stream",
+    "size": 73,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/ORIG_HEAD": {
+    "path": "/workspaces/cognosis/.git/ORIG_HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-26T23:01:27.269295",
+    "modified": "2025-01-26T23:01:27.269295",
+    "hash": "ebe7458970061ad734480978ba0a80d952970fd16e0bd6567279204af00b9a7b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/config": {
+    "path": "/workspaces/cognosis/.git/config",
+    "mime_type": "application/octet-stream",
+    "size": 421,
+    "created": "2025-01-26T02:47:55.794700",
+    "modified": "2025-01-26T02:47:55.794700",
+    "hash": "dc0aa084417061857cf462c49fd75e0eec488e590aa53ed042c318c54aa3539b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/packed-refs": {
+    "path": "/workspaces/cognosis/.git/packed-refs",
+    "mime_type": "application/octet-stream",
+    "size": 114,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:56.055735",
+    "hash": "1e699bd094b28c58df5bfa1cdbaa9dd003b5695e57c87a0fcda5e6ee90f8efa3",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/index": {
+    "path": "/workspaces/cognosis/.git/index",
+    "mime_type": "application/octet-stream",
+    "size": 3214,
+    "created": "2025-01-26T23:01:13.957295",
+    "modified": "2025-01-26T23:01:13.957295",
+    "hash": "a804a82900ef415a50869d43f4f3e00b0a7b468b02c622c6c75f9c1b370eedc5",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/66/e811bb2dff48d781ed239eb2b1ffaefa3b7583": {
+    "path": "/workspaces/cognosis/.git/objects/66/e811bb2dff48d781ed239eb2b1ffaefa3b7583",
+    "mime_type": "application/octet-stream",
+    "size": 59,
+    "created": "2025-01-26T02:45:08.026702",
+    "modified": "2025-01-26T02:45:08.026702",
+    "hash": "b8cbc7a79007f4717c4270cd335df84bdcb6b8046e82be5ee4b6e7f15606eb6c",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/8d/cf70b3577d39d0c3c6286a349785a22ae72f7e": {
+    "path": "/workspaces/cognosis/.git/objects/8d/cf70b3577d39d0c3c6286a349785a22ae72f7e",
+    "mime_type": "application/octet-stream",
+    "size": 212,
+    "created": "2025-01-24T02:56:28.402181",
+    "modified": "2025-01-24T02:56:28.402181",
+    "hash": "e0702e195af3bde34310415838706d35dbe3a0a69497f9a17e6609cc5f697cf3",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/6c/e02e30b874917d7c4c05d81875b29803bc77da": {
+    "path": "/workspaces/cognosis/.git/objects/6c/e02e30b874917d7c4c05d81875b29803bc77da",
+    "mime_type": "application/octet-stream",
+    "size": 821,
+    "created": "2025-01-26T02:45:30.530701",
+    "modified": "2025-01-26T02:45:30.530701",
+    "hash": "fd28f6f36d407f0d35aefe7a6e04cd431665d8c36062604034de69ed5a795c54",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/90/c32f615198615a06ddbae868877753e8714262": {
+    "path": "/workspaces/cognosis/.git/objects/90/c32f615198615a06ddbae868877753e8714262",
+    "mime_type": "application/octet-stream",
+    "size": 830,
+    "created": "2025-01-26T02:45:08.026702",
+    "modified": "2025-01-26T02:45:08.026702",
+    "hash": "755f91cacccdf413bfc071590053b2c0ffdc32146f2fff4f25f4761c6c19da36",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/24/f145b74f36b7845ffbf8d519d917942227934f": {
+    "path": "/workspaces/cognosis/.git/objects/24/f145b74f36b7845ffbf8d519d917942227934f",
+    "mime_type": "application/octet-stream",
+    "size": 382,
+    "created": "2025-01-24T07:44:31.648430",
+    "modified": "2025-01-24T07:44:31.648430",
+    "hash": "fdb8ab9462b042774b3a1e9680840e1d7915f1c2dfdf997555cb0b4359eb9140",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/9d/5b1dc2a3adb93bd5286a167483e6c1ca2725f7": {
+    "path": "/workspaces/cognosis/.git/objects/9d/5b1dc2a3adb93bd5286a167483e6c1ca2725f7",
+    "mime_type": "application/octet-stream",
+    "size": 380,
+    "created": "2025-01-26T23:01:13.957295",
+    "modified": "2025-01-26T23:01:13.957295",
+    "hash": "b15f06e59dc9e5495d13aecd1bf259bb373705e9a45523f2aa7e65e8c3fe0cfc",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/05/398f844808addc9c58ba368916df69c95c3817": {
+    "path": "/workspaces/cognosis/.git/objects/05/398f844808addc9c58ba368916df69c95c3817",
+    "mime_type": "application/octet-stream",
+    "size": 1860,
+    "created": "2025-01-26T02:45:30.530701",
+    "modified": "2025-01-26T02:45:30.530701",
+    "hash": "2eaccbd0e945e15bb16eda7105c1d1102b2898e9aaeb22ddfe8198783a12579b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/b0/63875e9b5ae6a28feb0e3b411f7eb22ce68221": {
+    "path": "/workspaces/cognosis/.git/objects/b0/63875e9b5ae6a28feb0e3b411f7eb22ce68221",
+    "mime_type": "application/octet-stream",
+    "size": 346,
+    "created": "2025-01-24T07:45:17.864431",
+    "modified": "2025-01-24T07:45:17.864431",
+    "hash": "db7cedfbd0a10956001687a35daec5f5acb44d4fa919b55afd61c5e5a78f4fa4",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/6d/fbe048f2ad314fad8c07aaed44494b9b730a7d": {
+    "path": "/workspaces/cognosis/.git/objects/6d/fbe048f2ad314fad8c07aaed44494b9b730a7d",
+    "mime_type": "application/octet-stream",
+    "size": 380,
+    "created": "2025-01-26T02:48:10.682700",
+    "modified": "2025-01-26T02:48:10.682700",
+    "hash": "e45a09058512bef36e1cd5c75e987412315f80272b8309aaf6602ff41403aff4",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/ee/aee5e161751b842e5ae83b9afda619237f82ca": {
+    "path": "/workspaces/cognosis/.git/objects/ee/aee5e161751b842e5ae83b9afda619237f82ca",
+    "mime_type": "application/octet-stream",
+    "size": 51,
+    "created": "2025-01-24T02:56:28.402181",
+    "modified": "2025-01-24T02:56:28.402181",
+    "hash": "91a7d9f321da4206381feedd15f52d40170ce4042312e2974a1777543a286384",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/0a/298972e6f6341fba458a78627336a4e8ce5382": {
+    "path": "/workspaces/cognosis/.git/objects/0a/298972e6f6341fba458a78627336a4e8ce5382",
+    "mime_type": "application/octet-stream",
+    "size": 463,
+    "created": "2025-01-24T02:56:28.394181",
+    "modified": "2025-01-24T02:56:28.394181",
+    "hash": "af2fe689fdc2537d9f9c64b2338c86efc096a69a32211eafa532b3a98709e052",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/0a/264aa03d62ca511be6ee406a8d59c35d86c441": {
+    "path": "/workspaces/cognosis/.git/objects/0a/264aa03d62ca511be6ee406a8d59c35d86c441",
+    "mime_type": "application/octet-stream",
+    "size": 169,
+    "created": "2025-01-26T02:48:10.702700",
+    "modified": "2025-01-26T02:48:10.702700",
+    "hash": "8a5d6ee490433a98ca22fdff066438e998ca59b5fb858a4210ec57480477787d",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/7f/66ae185c856457969e12840398ce3be3313b08": {
+    "path": "/workspaces/cognosis/.git/objects/7f/66ae185c856457969e12840398ce3be3313b08",
+    "mime_type": "application/octet-stream",
+    "size": 346,
+    "created": "2025-01-24T02:56:28.402181",
+    "modified": "2025-01-24T02:56:28.402181",
+    "hash": "0266a5c166c8e6d2c7a8bb6e5d0e8db7628de33cb81dd0e584a7a57d50380dbe",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/d0/cc077a7f241b8a416e8d83f2cebf23a73bc95e": {
+    "path": "/workspaces/cognosis/.git/objects/d0/cc077a7f241b8a416e8d83f2cebf23a73bc95e",
+    "mime_type": "application/octet-stream",
+    "size": 728,
+    "created": "2025-01-26T23:01:13.941295",
+    "modified": "2025-01-26T23:01:13.941295",
+    "hash": "74bc41ebbb335b310d825b4249fd5f5f04d3d72824ce6af7e91734181a535080",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/63/f08e6a8ec0783cd81b4f195474d0bbb47952e9": {
+    "path": "/workspaces/cognosis/.git/objects/63/f08e6a8ec0783cd81b4f195474d0bbb47952e9",
+    "mime_type": "application/octet-stream",
+    "size": 603,
+    "created": "2025-01-26T02:45:08.026702",
+    "modified": "2025-01-26T02:45:08.026702",
+    "hash": "f6562af4c912bc1ec8174dacc42dba1b452cc4d78fb1016e6665bac9dddb5a48",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/73/9b90754bcd5adb8953f24b66a6632fe27c4c56": {
+    "path": "/workspaces/cognosis/.git/objects/73/9b90754bcd5adb8953f24b66a6632fe27c4c56",
+    "mime_type": "application/octet-stream",
+    "size": 318,
+    "created": "2025-01-24T02:38:14.346223",
+    "modified": "2025-01-24T02:38:14.346223",
+    "hash": "78f04695a111bbe11faea5a6624f0d189a1e67b740856dee47b91913f7bac3a1",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/65/ff5040975b053cf771cae68c1723517457be5f": {
+    "path": "/workspaces/cognosis/.git/objects/65/ff5040975b053cf771cae68c1723517457be5f",
+    "mime_type": "application/octet-stream",
+    "size": 4732,
+    "created": "2025-01-26T02:45:08.026702",
+    "modified": "2025-01-26T02:45:08.026702",
+    "hash": "b0fd6324e457781c9f2112693a3bf2c036ea5c9419713d351067134906b16e82",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/a3/c3318687d88285603bfe483926a44c587c557c": {
+    "path": "/workspaces/cognosis/.git/objects/a3/c3318687d88285603bfe483926a44c587c557c",
+    "mime_type": "application/octet-stream",
+    "size": 126,
+    "created": "2025-01-26T02:45:08.038702",
+    "modified": "2025-01-26T02:45:08.038702",
+    "hash": "86b4a66be7e9e8c37f206ec841d5c6a53bc4fbae994c19e26821bab141142718",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/64/8f39f51379dff7543ac1d1f79cda5c93ca9958": {
+    "path": "/workspaces/cognosis/.git/objects/64/8f39f51379dff7543ac1d1f79cda5c93ca9958",
+    "mime_type": "application/octet-stream",
+    "size": 7612,
+    "created": "2025-01-24T02:38:14.330223",
+    "modified": "2025-01-24T02:38:14.330223",
+    "hash": "5b04b4f25eda5cbdc5276d8f4a58c4669015bd0779ad059eafd974e1559f7105",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/9c/55bed4c283ba5d5ea770743d25004283c13097": {
+    "path": "/workspaces/cognosis/.git/objects/9c/55bed4c283ba5d5ea770743d25004283c13097",
+    "mime_type": "application/octet-stream",
+    "size": 61,
+    "created": "2025-01-24T07:44:31.648430",
+    "modified": "2025-01-24T07:44:31.648430",
+    "hash": "b5e0c3cf0cb4996b37790862c527e6fff8e7998de323d42ce087f66750d37231",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/e7/c778a75b15f2ac5a15e2e35c910c5e61aa49e9": {
+    "path": "/workspaces/cognosis/.git/objects/e7/c778a75b15f2ac5a15e2e35c910c5e61aa49e9",
+    "mime_type": "application/octet-stream",
+    "size": 392,
+    "created": "2025-01-26T02:45:08.026702",
+    "modified": "2025-01-26T02:45:08.026702",
+    "hash": "1941cc2d71c71d4a6763a12ad821cb6ff2a6c0e401295c26d5d845cdec384d33",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/94/d25c7886d663552427d84caed0d2d9c99fecc0": {
+    "path": "/workspaces/cognosis/.git/objects/94/d25c7886d663552427d84caed0d2d9c99fecc0",
+    "mime_type": "application/octet-stream",
+    "size": 167,
+    "created": "2025-01-24T02:40:31.562218",
+    "modified": "2025-01-24T02:40:31.562218",
+    "hash": "53c48932da27bd2e3ec9ac27df596f29ec73f04de3a106a55a18fcfb36469e9a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/89/c2bf74c8b86cf5a6e268da6edaa7a7c8724a22": {
+    "path": "/workspaces/cognosis/.git/objects/89/c2bf74c8b86cf5a6e268da6edaa7a7c8724a22",
+    "mime_type": "application/octet-stream",
+    "size": 156,
+    "created": "2025-01-24T02:38:14.346223",
+    "modified": "2025-01-24T02:38:14.346223",
+    "hash": "56c62dc4f6ed4d4909512f29e0f2af9d1acbb6d227568167f2de5a0e1703d84f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/56/032b5e85cb0e0bbeddec59b9a503a05ddae9dc": {
+    "path": "/workspaces/cognosis/.git/objects/56/032b5e85cb0e0bbeddec59b9a503a05ddae9dc",
+    "mime_type": "application/octet-stream",
+    "size": 347,
+    "created": "2025-01-26T02:45:30.530701",
+    "modified": "2025-01-26T02:45:30.530701",
+    "hash": "412536f66f8ee1d11b51c02fe69c96c30a16d694b301e4dc59622921e9e5232f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/9b/b4b9582619a623dab2b02f0520c5b3b0c20089": {
+    "path": "/workspaces/cognosis/.git/objects/9b/b4b9582619a623dab2b02f0520c5b3b0c20089",
+    "mime_type": "application/octet-stream",
+    "size": 211,
+    "created": "2025-01-24T02:56:28.402181",
+    "modified": "2025-01-24T02:56:28.402181",
+    "hash": "91e998dd017396f9ba16fed2158a6518ad30ebe7f37f7bf5c8395071c8cf254a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/f2/9de94b615bb8f72aa9c85ef32b1c467585aedc": {
+    "path": "/workspaces/cognosis/.git/objects/f2/9de94b615bb8f72aa9c85ef32b1c467585aedc",
+    "mime_type": "application/octet-stream",
+    "size": 296,
+    "created": "2025-01-24T02:38:14.346223",
+    "modified": "2025-01-24T02:38:14.346223",
+    "hash": "2597da21338c53d817eb6070cc99ef43b40fc4dfbd00334f8e719e9618ab11aa",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/4b/574cb77b17d0add073487cf17ab8ba10ec5074": {
+    "path": "/workspaces/cognosis/.git/objects/4b/574cb77b17d0add073487cf17ab8ba10ec5074",
+    "mime_type": "application/octet-stream",
+    "size": 272,
+    "created": "2025-01-24T07:44:31.648430",
+    "modified": "2025-01-24T07:44:31.648430",
+    "hash": "1888848b3c3174259bbfa1fd3de8818e5d0805257f91de45d209b805886b8366",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/19/38ac74f5135062611aa6c892b54c3cf21fbd25": {
+    "path": "/workspaces/cognosis/.git/objects/19/38ac74f5135062611aa6c892b54c3cf21fbd25",
+    "mime_type": "application/octet-stream",
+    "size": 891,
+    "created": "2025-01-24T03:05:14.746161",
+    "modified": "2025-01-24T03:05:14.746161",
+    "hash": "91cc735a76d9168529b6f3f1dfde8c8b1694f0007bbf6527dff314c07eb2b7dc",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/c8/181520c011993ae3ee3bcb098afeedd0f9f8d9": {
+    "path": "/workspaces/cognosis/.git/objects/c8/181520c011993ae3ee3bcb098afeedd0f9f8d9",
+    "mime_type": "application/octet-stream",
+    "size": 261,
+    "created": "2025-01-24T07:44:31.636430",
+    "modified": "2025-01-24T07:44:31.636430",
+    "hash": "04d47e486f1683f9ab2f59a1203acba683c919d0bc17b2b2c88c2ea1c97afb85",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/62/dfb5cd9ee812d96d1d81f2d71c7b0ee92422f5": {
+    "path": "/workspaces/cognosis/.git/objects/62/dfb5cd9ee812d96d1d81f2d71c7b0ee92422f5",
+    "mime_type": "application/octet-stream",
+    "size": 165,
+    "created": "2025-01-24T02:56:59.990180",
+    "modified": "2025-01-24T02:56:59.990180",
+    "hash": "d4f2bd9e178e518f5e38a83d976b9ebbd88903ca0167c8cae1f2cc9b7f469523",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/d5/8866bd6f2cf2b35ddececa950d5e683af24141": {
+    "path": "/workspaces/cognosis/.git/objects/d5/8866bd6f2cf2b35ddececa950d5e683af24141",
+    "mime_type": "application/octet-stream",
+    "size": 936,
+    "created": "2025-01-24T07:44:31.636430",
+    "modified": "2025-01-24T07:44:31.636430",
+    "hash": "7b18e1142748c38e4714893a5a31650074ee30b69bd1bf1f74fccf0215d5e4af",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/b4/7b17f88becdb767fd0ebedcef4461d31b989cb": {
+    "path": "/workspaces/cognosis/.git/objects/b4/7b17f88becdb767fd0ebedcef4461d31b989cb",
+    "mime_type": "application/octet-stream",
+    "size": 183,
+    "created": "2025-01-24T07:46:06.088433",
+    "modified": "2025-01-24T07:46:06.088433",
+    "hash": "8523e9f65a8e62c8e0696e39c74e4003adcf532b21570dbbdc798dfe0098259e",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/9f/3dead595b4b2db6bb19382ab8505b170109e07": {
+    "path": "/workspaces/cognosis/.git/objects/9f/3dead595b4b2db6bb19382ab8505b170109e07",
+    "mime_type": "application/octet-stream",
+    "size": 187,
+    "created": "2025-01-24T07:44:31.648430",
+    "modified": "2025-01-24T07:44:31.648430",
+    "hash": "67565b443bae4742cef1f3476e10ce45bc2d5a5bba6deb402a22dcc2c17312e2",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/1c/d6ab8a6e92fc8facd373cf40d9729a644c8b3e": {
+    "path": "/workspaces/cognosis/.git/objects/1c/d6ab8a6e92fc8facd373cf40d9729a644c8b3e",
+    "mime_type": "application/octet-stream",
+    "size": 379,
+    "created": "2025-01-26T02:45:08.038702",
+    "modified": "2025-01-26T02:45:08.038702",
+    "hash": "1795844cd385bc9eb9ab1d39e04e4942f4c68bd7aa299584dfd0ca3799ff23f8",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/83/f8586f25472a5b62e0bfa173e49b3fe5d225b1": {
+    "path": "/workspaces/cognosis/.git/objects/83/f8586f25472a5b62e0bfa173e49b3fe5d225b1",
+    "mime_type": "application/octet-stream",
+    "size": 51,
+    "created": "2025-01-26T02:45:30.530701",
+    "modified": "2025-01-26T02:45:30.530701",
+    "hash": "e8e597df6cd620e53e812508f8222ded3efa9ef35e40e1b6d68a4b699d188bcb",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/48/631b40fcb5d812b9c6b40e097e4d57b4616b44": {
+    "path": "/workspaces/cognosis/.git/objects/48/631b40fcb5d812b9c6b40e097e4d57b4616b44",
+    "mime_type": "application/octet-stream",
+    "size": 186,
+    "created": "2025-01-26T23:01:13.957295",
+    "modified": "2025-01-26T23:01:13.957295",
+    "hash": "b6d0455a5390c45559d44dd799a5c072d30b09b9eaa0a2aa8fa4151e9fcf91b9",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.rev": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.rev",
+    "mime_type": "application/octet-stream",
+    "size": 284,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.027735",
+    "hash": "463c3d14d55b201a2c0ccf86090d6b5d8e17a38faa17501d7be39281cdd62d4c",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.idx": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.idx",
+    "mime_type": "application/octet-stream",
+    "size": 2696,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:13:56.027735",
+    "hash": "174f477068b83418414e1b7217b4862e373954b63e0610cf5c4cc9802cd96ac1",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.pack": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.pack",
+    "mime_type": "application/octet-stream",
+    "size": 141225,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:14:05.363735",
+    "hash": "67ae605d98ff0f19f67f51fef96675bf6e070bc8cadfab7cd3b36e26944eb0e0",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.idx": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.idx",
+    "mime_type": "application/octet-stream",
+    "size": 7904,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:14:05.379735",
+    "hash": "65a98f61f5e072e3cba6bd765a9f301b4fd67ae00a6c713e546d036bdefe4607",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.pack": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-0d7672775f0bcebc2c835106b633920638671e38.pack",
+    "mime_type": "application/octet-stream",
+    "size": 1383003,
+    "created": "2025-01-26T23:01:13.941295",
+    "modified": "2025-01-26T23:01:13.941295",
+    "hash": "47128694b4c16da1c3493f33fe62f917eb5fbde9c831dba3d7b587c47e44fc46",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.rev": {
+    "path": "/workspaces/cognosis/.git/objects/pack/pack-a4dfff2514cd909bf46b1843efed48c85f87482c.rev",
+    "mime_type": "application/octet-stream",
+    "size": 1028,
+    "created": "2025-01-03T06:14:05.903735",
+    "modified": "2025-01-03T06:14:05.379735",
+    "hash": "bad4fd760c11b7dba4d71bee93844ecc1ba43b3f40cac094282d93ef68dbeae1",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/a8/b2d1b3493f7c4f7f9fbd69779806233109c9cf": {
+    "path": "/workspaces/cognosis/.git/objects/a8/b2d1b3493f7c4f7f9fbd69779806233109c9cf",
+    "mime_type": "application/octet-stream",
+    "size": 2377,
+    "created": "2025-01-24T02:56:28.394181",
+    "modified": "2025-01-24T02:56:28.394181",
+    "hash": "3696db45069f3aff853549844d57410a2e9f3cc62091836405bdeb68bf57ff90",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/38/7e6b82b9d568c1d63d421ad2aaa2c57f02fb8a": {
+    "path": "/workspaces/cognosis/.git/objects/38/7e6b82b9d568c1d63d421ad2aaa2c57f02fb8a",
+    "mime_type": "application/octet-stream",
+    "size": 272,
+    "created": "2025-01-26T23:01:13.957295",
+    "modified": "2025-01-26T23:01:13.957295",
+    "hash": "d991baf9088433caca8f7165954c7da24f7465928d5c0e33a3680feedd0e25d4",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/ba/35efacded9a3c1b69fa7335e83c55027f8a545": {
+    "path": "/workspaces/cognosis/.git/objects/ba/35efacded9a3c1b69fa7335e83c55027f8a545",
+    "mime_type": "application/octet-stream",
+    "size": 151,
+    "created": "2025-01-26T23:01:18.813295",
+    "modified": "2025-01-26T23:01:18.813295",
+    "hash": "af14f7484f63d0b607f0eee39dfa5d512ad45451c22758b1dfaf8a98257cd11f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/ba/850c3d06b20bf8daea032569f774a90379f5e0": {
+    "path": "/workspaces/cognosis/.git/objects/ba/850c3d06b20bf8daea032569f774a90379f5e0",
+    "mime_type": "application/octet-stream",
+    "size": 165,
+    "created": "2025-01-26T02:45:26.490701",
+    "modified": "2025-01-26T02:45:26.490701",
+    "hash": "2da1d1f53362f495e1a8e603f400ed330c38cd4a6b12578533759a44a10b783a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/34/a875f8f5af3cc5fbd04042ab6c74243cbd033f": {
+    "path": "/workspaces/cognosis/.git/objects/34/a875f8f5af3cc5fbd04042ab6c74243cbd033f",
+    "mime_type": "application/octet-stream",
+    "size": 62,
+    "created": "2025-01-24T02:56:28.402181",
+    "modified": "2025-01-24T02:56:28.402181",
+    "hash": "de02b89c44c45e38d7bbf69299a17b9a28bb6a1e6da8c8f6db5ad231d95e878f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/objects/cd/2ff75cc375cb548d3ff59cfe85d7b93b73ec36": {
+    "path": "/workspaces/cognosis/.git/objects/cd/2ff75cc375cb548d3ff59cfe85d7b93b73ec36",
+    "mime_type": "application/octet-stream",
+    "size": 93,
+    "created": "2025-01-26T02:45:30.530701",
+    "modified": "2025-01-26T02:45:30.530701",
+    "hash": "f310f83cd64897d1e464f96cc7be26f1f15757a24c1e76736ca962ca9fb5c40a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/HEAD": {
+    "path": "/workspaces/cognosis/.git/logs/HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 2258,
+    "created": "2025-01-26T23:01:18.817295",
+    "modified": "2025-01-26T23:01:18.817295",
+    "hash": "b162c5cbd4ceb3891f19af890961e3cd1e32c3c10ddcee696a227067cc14a930",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/heads/production": {
+    "path": "/workspaces/cognosis/.git/logs/refs/heads/production",
+    "mime_type": "application/octet-stream",
+    "size": 1025,
+    "created": "2025-01-26T23:01:18.817295",
+    "modified": "2025-01-26T23:01:18.817295",
+    "hash": "9b5b112eb1f25497842ea02b739ad1ba829652c7fd11b6a1e0f1aadcfd81fd32",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/heads/master": {
+    "path": "/workspaces/cognosis/.git/logs/refs/heads/master",
+    "mime_type": "application/octet-stream",
+    "size": 581,
+    "created": "2025-01-24T02:56:59.990180",
+    "modified": "2025-01-24T02:56:59.990180",
+    "hash": "a6bae3c4f89236c5769fbd1aafc1181678e18086547fc83357768b8ee4544b3c",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/remotes/origin/newbranch": {
+    "path": "/workspaces/cognosis/.git/logs/refs/remotes/origin/newbranch",
+    "mime_type": "application/octet-stream",
+    "size": 241,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:14:05.395735",
+    "hash": "da8c67b81479e7c79e3f5b4931bf13ff73a21cd9e20818242cd9f0759767830b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/remotes/origin/HEAD": {
+    "path": "/workspaces/cognosis/.git/logs/refs/remotes/origin/HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 249,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:56.059735",
+    "hash": "e400f555e1b09dd40378548a60e64af53363426f6375fb0bc1fc123f297d8b1f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/remotes/origin/production": {
+    "path": "/workspaces/cognosis/.git/logs/refs/remotes/origin/production",
+    "mime_type": "application/octet-stream",
+    "size": 901,
+    "created": "2025-01-26T23:01:28.121295",
+    "modified": "2025-01-26T23:01:28.121295",
+    "hash": "6e314fede160af00329f649dd19f025032293a112a9e57336d4b1204d72b4b42",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/logs/refs/remotes/origin/master": {
+    "path": "/workspaces/cognosis/.git/logs/refs/remotes/origin/master",
+    "mime_type": "application/octet-stream",
+    "size": 288,
+    "created": "2025-01-24T03:02:35.498167",
+    "modified": "2025-01-24T03:02:35.498167",
+    "hash": "a6b5157edf84978b63b4f057bc9a45dbdea54ae6e72d1ab2feea8c795d17d712",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/info/exclude": {
+    "path": "/workspaces/cognosis/.git/info/exclude",
+    "mime_type": "application/octet-stream",
+    "size": 240,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/heads/production": {
+    "path": "/workspaces/cognosis/.git/refs/heads/production",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-26T23:01:18.817295",
+    "modified": "2025-01-26T23:01:18.817295",
+    "hash": "ebe7458970061ad734480978ba0a80d952970fd16e0bd6567279204af00b9a7b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/heads/master": {
+    "path": "/workspaces/cognosis/.git/refs/heads/master",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-24T02:56:59.990180",
+    "modified": "2025-01-24T02:56:59.990180",
+    "hash": "e16c4a39dfa48136622af288785d0141f48924f1735513b9f3aaf9048904fbb9",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/remotes/origin/newbranch": {
+    "path": "/workspaces/cognosis/.git/refs/remotes/origin/newbranch",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:14:05.391735",
+    "hash": "0129131b5ff7312254a78e67a1ec8162818d059e83d09dd6e0b9e58873595337",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/remotes/origin/HEAD": {
+    "path": "/workspaces/cognosis/.git/refs/remotes/origin/HEAD",
+    "mime_type": "application/octet-stream",
+    "size": 32,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:56.059735",
+    "hash": "cdc65e67690c4c6475174e5ec662b70655246a2f3924354778835ab3be70aa76",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/remotes/origin/production": {
+    "path": "/workspaces/cognosis/.git/refs/remotes/origin/production",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-26T23:01:28.121295",
+    "modified": "2025-01-26T23:01:28.121295",
+    "hash": "ebe7458970061ad734480978ba0a80d952970fd16e0bd6567279204af00b9a7b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/refs/remotes/origin/master": {
+    "path": "/workspaces/cognosis/.git/refs/remotes/origin/master",
+    "mime_type": "application/octet-stream",
+    "size": 41,
+    "created": "2025-01-24T03:02:35.498167",
+    "modified": "2025-01-24T03:02:35.498167",
+    "hash": "e16c4a39dfa48136622af288785d0141f48924f1735513b9f3aaf9048904fbb9",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/commit-msg.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/commit-msg.sample",
+    "mime_type": "application/octet-stream",
+    "size": 896,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-commit.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-commit.sample",
+    "mime_type": "application/octet-stream",
+    "size": 1649,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/fsmonitor-watchman.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/fsmonitor-watchman.sample",
+    "mime_type": "application/octet-stream",
+    "size": 4726,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-receive.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-receive.sample",
+    "mime_type": "application/octet-stream",
+    "size": 544,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-merge-commit.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-merge-commit.sample",
+    "mime_type": "application/octet-stream",
+    "size": 416,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-push.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-push.sample",
+    "mime_type": "application/octet-stream",
+    "size": 1374,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/applypatch-msg.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/applypatch-msg.sample",
+    "mime_type": "application/octet-stream",
+    "size": 478,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/push-to-checkout.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/push-to-checkout.sample",
+    "mime_type": "application/octet-stream",
+    "size": 2783,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/sendemail-validate.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/sendemail-validate.sample",
+    "mime_type": "application/octet-stream",
+    "size": 2308,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-rebase.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-rebase.sample",
+    "mime_type": "application/octet-stream",
+    "size": 4898,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/pre-applypatch.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/pre-applypatch.sample",
+    "mime_type": "application/octet-stream",
+    "size": 424,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.295735",
+    "hash": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/prepare-commit-msg.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/prepare-commit-msg.sample",
+    "mime_type": "application/octet-stream",
+    "size": 1492,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/post-update.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/post-update.sample",
+    "mime_type": "application/octet-stream",
+    "size": 189,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+    "symlinks": [],
+    "has_content": false
+  },
+  ".git/hooks/update.sample": {
+    "path": "/workspaces/cognosis/.git/hooks/update.sample",
+    "mime_type": "application/octet-stream",
+    "size": 3650,
+    "created": "2025-01-03T06:14:05.907735",
+    "modified": "2025-01-03T06:13:55.291735",
+    "hash": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+    "symlinks": [],
+    "has_content": false
+  }
+}
