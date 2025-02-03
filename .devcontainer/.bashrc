@@ -1,172 +1,39 @@
 #!/bin/bash
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 # ==========================================================
-# BASH and prompt Configurations
+# Aliases + Key+Commands [(modifier) + key]
 # ==========================================================
-# Colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-force_color_prompt=yes
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
-fi
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-# Bash history configurations
-HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
-shopt -s histappend
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-
-# Check if the shell is running interactively
-check_interactive_shell() {
-    case "$-" in
-        *i*) return 0 ;; # Interactive shell
-        *) return 1 ;;   # Non-interactive shell
-    esac
-}
-
-# Set variable identifying the chroot (if available)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# Function to set up terminal title and color support
-setup_terminal() {
-    case "$TERM" in
-        xterm*|rxvt*)
-            PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-            ;;
-        *)
-            ;;
-    esac
-
-    # Enable color support of ls and also add handy aliases
-    if [ -x /usr/bin/dircolors ]; then
-        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-        alias ls='ls --color=auto'
-        alias grep='grep --color=auto'
-        alias fgrep='fgrep --color=auto'
-        alias egrep='egrep --color=auto'
-    fi
-
-    # Colored GCC warnings and errors
-    export GCC_COLORS
-}
-
-# Check if terminal setup should be enabled
-if [ -n "$ENABLE_TERMINAL_SETUP" ]; then
-    setup_terminal
-fi
-
-# Color constants for use in scripts and stdout
-RED='\033[38;5;255m'
-GREEN='\033[38;5;2m'
-YELLOW='\033[38;5;214m'
-BLUE='\033[38;5;4m'
-PURPLE='\033[38;5;127m'
-
-# Function for printing colored text, allowing flexibility
-cpick() {
-    echo -e "\033[38;5;${1}m${2}\033[0m"
-}
-
-# Helper functions for common colors
-red() {
-    cpick "$RED" "$@"
-}
-green() {
-    cpick "$GREEN" "$@"
-}
-yellow() {
-    cpick "$YELLOW" "$@"
-}
-blue() {
-    cpick "$BLUE" "$@"
-}
-purple() {
-    cpick "$PURPLE" "$@"
-}
-
-# Aliases for common commands and Git configurations
-alias lll='ls -lka --color=auto'
+alias ...='../../'
+alias ..='../'
+# gitdoc  # see (gitdoc) below
+# H [] # see (H) below
+# alert [] # see (alert) below
+# popx [] # see (popx) below
+# bp # see (bp) below
+# .bp # see (bp) below
+# backup [] # see (backup) below
+# ct [] # see (ct) below
+# hg [] # see (hg) below
+# HG [] # see (HG) below
+# gunadd [] # reverse git add (takes off git add <file> from staging area)
+# unstage # see (unstage) below
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ip='ip --color=auto'
 alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
-alias ..='../'
-
-# Git aliases for common operations
-alias gs='git status'
-alias gca='git commit -a'
-alias gcam='git commit -am'
-alias gp='git push'
-alias gup='git pull'
-alias gco='git checkout'
-alias gcb='git checkout -b'
-alias gl='git log --graph --oneline --decorate --all'
-alias gll='git log -1 --stat'
-alias gclean='git clean -fdX'
-alias diff='git diff --color-words'
-alias dif='git diff --color --word-diff --stat'
-
-# Git configuration
-git config --global rerere.enabled true
-
-# Reverse git add (takes off git add <file> from staging area)
-unstage() {
-    git reset HEAD -- $1
-}
-
-# Enable fsmonitor-watchman deamon for git IPC
-git config --global core.fsmonitor true
-
-# Example usage of color functions
-echo "$(green "This is green text.")"
-echo "$(purple "This is purple text.")"
-echo -e "\033[0m" # Reset color to default
-# ==========================================================
-# Aliases
-# ==========================================================
-# This section defines various aliases and configurations related to Git.
-# Aliases provide shorthand commands for common Git operations, enhancing productivity.
-# Additionally, Git functions like enabling rerere and defining a function to unstage changes are configured here.
-# ----------------------------------------------------
-# Aliases:
-# - Various aliases are defined to simplify commonly used Git commands.
-#   For example, 'gs' is short for 'git status', 'gca' for 'git commit -a', etc.
-# - These aliases can be invoked in the terminal to execute the corresponding Git commands quickly.
-# ----------------------------------------------------
-# Git Functions:
-# - The 'git config' command sets global configurations for Git, such as enabling rerere.
-# - The 'unstage' function reverses the 'git add' operation, allowing users to unstage changes from the index.
-# ----------------------------------------------------
-# Terminal Setup Interaction:
-# - The aliases and Git configurations defined here are independent of the terminal setup performed by the `setup_terminal` function.
-# - However, if the `ENABLE_TERMINAL_SETUP` variable is set and the `setup_terminal` function is invoked, it will still execute the terminal setup logic.
-# - This means that even if aliases and Git configurations are defined, the terminal setup will only occur if explicitly triggered by the `ENABLE_TERMINAL_SETUP` variable.
-# - To activate the terminal setup logic, set `ENABLE_TERMINAL_SETUP` to any non-empty value elsewhere in your script.
-alias lll='ls -lka --color=auto'
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
-alias ..='../'
-# alias cr='history | grep <search_term>' # see (reverse-i-search)`' == "ctrl+r" below
+alias kex='kex --win -s'
 # ==========================================================
 # git Configurations
 # ==========================================================
-# Git Aliases
+# Git Aliases, see .gitconfig for more info & aliases
 alias gs='git status'
 alias gca='git commit -a'
 alias gcam='git commit -am'
@@ -181,16 +48,128 @@ alias diff='git diff --color-words'
 alias dif='git diff --color --word-diff --stat'
 # ----------------------------------------------------
 # Git Functions
-git config --global rerere.enabled 'true'
-# reverse git add (takes off git add <file> from staging area)
 function unstage() {
   git reset HEAD -- $1
 }
 # Enable fsmonitor-watchman deamon for git IPC
 git config --global core.fsmonitor 'true'
+# Git configuration
+git config --global rerere.enabled true
+# Reverse git add (takes off git add <file> from staging area)
+unstage() {
+    git reset HEAD -- $1
+}
+: <<'GIT_DOC'
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃                ⚡ Git Staging & Reset Cheat Sheet ⚡            ┃
+    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+    ┃ Command                         ┃ Effect                       ┃
+    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+    ┃ git add <file>                   ┃ Stage changes for commit    ┃
+    ┃ gunadd <file>                     ┃ Unstage, keep changes      ┃
+    ┃ git reset HEAD <file>             ┃ (Same as gunadd)           ┃
+    ┃ git checkout -- <file>            ┃ Discard local changes      ┃
+    ┃ git restore --staged <file>       ┃ Unstage, keep changes      ┃
+    ┃ git restore <file>                ┃ Discard local changes      ┃
+    ┃ git reset --soft HEAD~1           ┃ Undo commit, keep staged   ┃
+    ┃ git reset --mixed HEAD~1          ┃ Undo commit, unstage files ┃
+    ┃ git reset --hard HEAD~1           ┃ Undo commit & changes! ⚠   ┃
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+    🔥 `gunadd` is an alias for:
+       git reset HEAD <file>    # Unstages, but keeps file changes
+
+    ⚠  Use `git reset --hard` with caution—it nukes all changes!
+
+GIT_DOC
+alias gitdoc='cat <<EOF
+# (Paste the docstring here)
+EOF'
+# ==========================================================
+# Shell Behavior Enhancements
+# ==========================================================
+# Enable bash history features
+HISTCONTROL=ignoreboth
+HISTSIZE=5000
+HISTFILESIZE=10000
+shopt -s histappend checkwinsize
+# Set a colored prompt
+force_color_prompt=yes
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        color_prompt=yes
+    fi
+fi
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+# enable programmable completion features
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
+# ==========================================================
+# Colorized Output Functions
+# ==========================================================
+# Define basic ANSI color escape codes for named colors
+RED='\033[38;5;196m'
+GREEN='\033[38;5;46m'
+YELLOW='\033[38;5;226m'
+BLUE='\033[38;5;21m'
+PURPLE='\033[38;5;93m'
+NC='\033[0m' # No Color
+# NAMED color functions
+red() { ct "$RED" "$@"; }
+green() { ct "$GREEN" "$@"; }
+yellow() { ct "$YELLOW" "$@"; }
+blue() { ct "$BLUE" "$@"; }
+purple() { ct "$PURPLE" "$@"; }
+# Color Picker: Cycles through all 256 available colors in the terminal
+cpick() {
+    for i in {0..255}; do
+        # Print each color number in its respective color
+        echo -en "\033[38;5;${i}m${i} \033[0m"
+        # Line break after every 16 colors for readability
+        if (( (i + 1) % 16 == 0 )); then
+            echo # New line
+        fi
+    done
+    # Displaying named colors at the end of the cycle
+    echo -e "\nNamed Colors:"
+    echo -e "${RED}RED    \033[0m"
+    echo -e "${GREEN}GREEN  \033[0m"
+    echo -e "${YELLOW}YELLOW \033[0m"
+    echo -e "${BLUE}BLUE   \033[0m"
+    echo -e "${PURPLE}PURPLE \033[0m"
+
+}
+# Function to colorize text using cpick #'s
+ct() {
+    local color_code="$1"
+    shift
+    echo -e "${color_code}$*${NC}"
+}
+echo "$(purple "demiurge spectral #'s:.")"
+cpick
 # ==========================================================
 # Custom Functions
 # ==========================================================
+# HISTORY grep
+hg() {
+    history | grep --color=auto -i "$@"
+}
+# Filter command history with reverse sorting and unique results
+HG() {
+    history | grep -i "$@" | sort -r | uniq
+}
 # cr - Reverse search through command history
 #
 # Usage:
@@ -264,7 +243,6 @@ H() {
 function backup() {
     cp "$1" "$1.bak"
 }
-
 # alert - Notify when a long-running command completes
 #
 # Usage:
@@ -336,7 +314,6 @@ popx() {
 bp() {
     cp -r ./* ../
 }
-
 # .bp - Backport all files and directories to parent directory
 #
 # Usage:
@@ -355,13 +332,11 @@ bp() {
 .bp() {
     local current_dir="$(pwd)"
     local parent_dir="$(dirname "$current_dir")"
-
     # Check if the current directory is not the root directory
     if [[ "$current_dir" == "/" ]]; then
         echo "Cannot move the root directory."
         return 1
     fi
-
     # Copy all files and directories (including hidden ones)
     shopt -s dotglob # Enable matching dotfiles
     for item in ./*; do
@@ -371,43 +346,9 @@ bp() {
         fi
     done
     shopt -u dotglob # Disable matching dotfiles
-
     # Change to the parent directory
     cd "$parent_dir" || return
 
     echo "All files and directories copied and deleted from the current directory."
 }
-# ==========================================================
-# Init & $PATH
-# ==========================================================
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tp/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tp/miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/tp/miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tp/miniconda/bin:$PATH"
-    fi
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-# ----------------------------------------------------
-#  GO init
-
-# export PATH=$PATH:$HOME/.go/go/bin
-
-#  pipx init
-#  .local path init
-
-# export PATH=$PATH:~/.local/bin
-
-# . "$HOME/.cargo/env"
-
-# export PATH=$PATH:~/.cargo/bin
-
-# ==========================================================
-# End of Custom Bash Configurations
-# ==========================================================
