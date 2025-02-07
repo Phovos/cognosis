@@ -1,7 +1,18 @@
 #!/bin/bash
+# /.devcontainer/setup.sh
 set -e  # Exit on any error
 
-echo "Setting up the Cognosis dev environment..."
+echo "Setting up the Demiurge dev environment..."
+
+# Load the correct .env file based on the current branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$BRANCH" == "staging" ]]; then
+    cp /config/staging.env .env
+elif [[ "$BRANCH" == "main" ]]; then
+    cp /config/production.env .env
+else
+    cp /config/dev.env .env
+fi
 
 # Install Python dependencies and set up the environment
 uv install --extra dev
@@ -19,4 +30,4 @@ uv run --with jupyter jupyter lab --ip=0.0.0.0 --port=8888 --allow-root
 uv run -m nox -s tests  # Runs the tests session defined in the noxfile.py
 
 # Optional: Add any additional setup steps here
-echo "Cognosis development environment setup is complete."
+echo "Demiurge development environment setup is complete."
